@@ -54,7 +54,8 @@ namespace MaterialConstrucao
 
         public void delete()
         {
-
+            string sql = "Delete from funcionario WHERE CPF = '" + CPF + "';";
+            conexaoFunc.executarSql(sql);
         }
 
         public void update()
