@@ -131,8 +131,8 @@ namespace MaterialConstrucao
 			adapter = conexao.executaRetornaDados(sql);
 			adapter.Fill(dataSet);
 
-			nomeCliente = dataSet.Tables[0].Rows[0][0].ToString(); // Linha 0, coluna 0
-			CEP = dataSet.Tables[0].Rows[0][1].ToString(); // Linha 0, coluna 1 
+			nomeCliente = dataSet.Tables[0].Rows[0][0].ToString();
+			CEP = dataSet.Tables[0].Rows[0][1].ToString(); 
 			cidade = dataSet.Tables[0].Rows[0][2].ToString();
 			sigla = Convert.ToInt16(dataSet.Tables[0].Rows[0][3].ToString());
 			numero = dataSet.Tables[0].Rows[0][4].ToString();

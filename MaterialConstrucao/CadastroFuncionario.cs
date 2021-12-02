@@ -61,7 +61,7 @@ namespace MaterialConstrucao
 
         private void preencheGrid()
         {
-            // grdDadosFuncionario.DataSource = 
+            grdDadosFuncionario.DataSource = func.select();
             formataGrid();
         }
 
@@ -130,7 +130,7 @@ namespace MaterialConstrucao
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            /*if (func.GetCPF_Funcionario() != "") 
+            if (func.getCPF_Funcionario() != "") 
             {
                 DialogResult retorno = MessageBox.Show("Deseja excluir os dados do funcionario selecionado?", "Exclusão",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -145,7 +145,7 @@ namespace MaterialConstrucao
             {
                 MessageBox.Show("Selecione o Funcionario para excluir", "Aviso!!!", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-            }*/
+            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)

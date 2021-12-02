@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace MaterialConstrucao
 {
@@ -60,7 +62,34 @@ namespace MaterialConstrucao
 
         public void update()
         {
+            string sql = "UPDATE cliente SET ";
+            sql += "CPF '" + CPF + "', ";
+            sql += "nome '" + nomeFuncionario + "', ";
+            sql += "telefone '" + telefone + "', ";
+            conexaoFunc.executarSql(sql);
+        }
 
+        public DataTable select()
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable tabela = new DataTable();
+            string sql = "Select CPF, nome, telefone from funcionario;";
+            adapter = conexaoFunc.executaRetornaDados(sql);
+            adapter.Fill(tabela);
+            return tabela;
+        }
+
+        public void selectFuncionario()
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataSet dataSet = new DataSet();
+            string sql = "SELECT nome, CEP, telefone FROM funcionario WHERE CPF = '" + CPF + "';";
+            adapter = conexaoFunc.executaRetornaDados(sql);
+            adapter.Fill(dataSet);
+
+            CPF = dataSet.Tables[0].Rows[0][0].ToString();
+            nomeFuncionario = dataSet.Tables[0].Rows[0][1].ToString();
+            telefone = dataSet.Tables[0].Rows[0][2].ToString();
         }
     }
 }
