@@ -33,7 +33,7 @@ namespace MaterialConstrucao
             this.cboSiglaC = new System.Windows.Forms.ComboBox();
             this.lblSiglaC = new System.Windows.Forms.Label();
             this.lblCidadeC = new System.Windows.Forms.Label();
-            this.txtNumeroC = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtCidadeC = new System.Windows.Forms.TextBox();
             this.txtCEP_C = new System.Windows.Forms.TextBox();
             this.lblNumeroC = new System.Windows.Forms.Label();
@@ -114,13 +114,13 @@ namespace MaterialConstrucao
             this.lblCidadeC.TabIndex = 26;
             this.lblCidadeC.Text = "Cidade";
             // 
-            // txtNumeroC
+            // txtNumero
             // 
-            this.txtNumeroC.Location = new System.Drawing.Point(575, 268);
-            this.txtNumeroC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNumeroC.Name = "txtNumeroC";
-            this.txtNumeroC.Size = new System.Drawing.Size(147, 20);
-            this.txtNumeroC.TabIndex = 22;
+            this.txtNumero.Location = new System.Drawing.Point(575, 268);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(147, 20);
+            this.txtNumero.TabIndex = 22;
             // 
             // txtCidadeC
             // 
@@ -322,7 +322,7 @@ namespace MaterialConstrucao
             this.Controls.Add(this.cboSiglaC);
             this.Controls.Add(this.lblSiglaC);
             this.Controls.Add(this.lblCidadeC);
-            this.Controls.Add(this.txtNumeroC);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtCidadeC);
             this.Controls.Add(this.txtCEP_C);
             this.Controls.Add(this.lblNumeroC);
@@ -351,7 +351,7 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ComboBox cboSiglaC;
         private System.Windows.Forms.Label lblSiglaC;
         private System.Windows.Forms.Label lblCidadeC;
-        private System.Windows.Forms.TextBox txtNumeroC;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.TextBox txtCidadeC;
         private System.Windows.Forms.TextBox txtCEP_C;
         private System.Windows.Forms.Label lblNumeroC;

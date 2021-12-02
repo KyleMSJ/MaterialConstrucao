@@ -22,7 +22,7 @@ namespace MaterialConstrucao
             txtCPF_C.Enabled = status;
             txtCEP_C.Enabled = status;
             txtTelefoneC.Enabled = status;
-            txtNumeroC.Enabled = status;
+            txtNumero.Enabled = status;
         }
 
         private void limparControles()
@@ -33,7 +33,7 @@ namespace MaterialConstrucao
             txtCPF_C.Text = "";
             txtCEP_C.Text = "";
             txtTelefoneC.Text = "";
-            txtNumeroC.Text = "";
+            txtNumero.Text = "";
         }
 
         private void gerenciaBotoesBarra(bool status)
@@ -84,7 +84,7 @@ namespace MaterialConstrucao
             client.SetTelefoneCliente(txtTelefoneC.Text);
             client.SetCidadeCliente(txtCidadeC.Text);
             client.SetEstadoCliente(Convert.ToInt16(cboSiglaC.SelectedIndex));
-            client.SetNumeroCliente(txtNumeroC.Text);
+            client.SetNumeroCliente(txtNumero.Text);
 
             if (client.GetCPFCliente() == "")
             { 
@@ -101,18 +101,14 @@ namespace MaterialConstrucao
 
             txtNomeC.Text = client.GetNomeCliente();
             txtCidadeC.Text = client.GetCidadeCliente();
-            txtNumeroC.Text = client.GetNumeroCliente();
+            txtNumero.Text = client.GetNumeroCliente();
             txtCEP_C.Text = client.GetCEPCliente();
             txtTelefoneC.Text = client.GetTelefoneCliente();
             txtCPF_C.Text = client.GetCPFCliente();
 
             cboSiglaC.SelectedIndex = client.GetEstadoCliente();
         }
-        private void grdDados_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            client.SetCPFCliente((grdDadosCliente.Rows[grdDadosCliente.CurrentRow.Index].Cells[0].Value.ToString()));
-            preencheDadosControles();
-        }
+
         public CadastroCliente()
         {
             InitializeComponent();
@@ -219,7 +215,11 @@ namespace MaterialConstrucao
             return true;
         }
 
-        
+        private void grdDados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            client.SetCPFCliente((grdDadosCliente.Rows[grdDadosCliente.CurrentRow.Index].Cells[0].Value.ToString()));
+            preencheDadosControles();
+        }
     }
 }
 

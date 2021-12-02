@@ -214,12 +214,13 @@ namespace MaterialConstrucao
             this.grdDadosFuncionario.AllowUserToAddRows = false;
             this.grdDadosFuncionario.AllowUserToDeleteRows = false;
             this.grdDadosFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDadosFuncionario.Location = new System.Drawing.Point(13, 62);
+            this.grdDadosFuncionario.Location = new System.Drawing.Point(13, 65);
             this.grdDadosFuncionario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grdDadosFuncionario.Name = "grdDadosFuncionario";
             this.grdDadosFuncionario.ReadOnly = true;
-            this.grdDadosFuncionario.Size = new System.Drawing.Size(330, 374);
+            this.grdDadosFuncionario.Size = new System.Drawing.Size(335, 371);
             this.grdDadosFuncionario.TabIndex = 29;
+            this.grdDadosFuncionario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDadosFuncionario_CellClick);
             // 
             // txtNomeF
             // 
@@ -256,6 +257,7 @@ namespace MaterialConstrucao
             this.btnNovo.Size = new System.Drawing.Size(54, 54);
             this.btnNovo.Text = "toolStripButton1";
             this.btnNovo.ToolTipText = "Cadastra novo cliente";
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnEditar
             // 
@@ -266,6 +268,7 @@ namespace MaterialConstrucao
             this.btnEditar.Size = new System.Drawing.Size(54, 54);
             this.btnEditar.Text = "toolStripButton2";
             this.btnEditar.ToolTipText = "Edita dados do cliente";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCancelar
             // 
@@ -276,6 +279,7 @@ namespace MaterialConstrucao
             this.btnCancelar.Size = new System.Drawing.Size(54, 54);
             this.btnCancelar.Text = "toolStripButton3";
             this.btnCancelar.ToolTipText = "Cancelar cadastro";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -286,6 +290,7 @@ namespace MaterialConstrucao
             this.btnSalvar.Size = new System.Drawing.Size(54, 54);
             this.btnSalvar.Text = "toolStripButton4";
             this.btnSalvar.ToolTipText = "Salvar dados do cliente";
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -296,6 +301,7 @@ namespace MaterialConstrucao
             this.btnExcluir.Size = new System.Drawing.Size(54, 54);
             this.btnExcluir.Text = "toolStripButton5";
             this.btnExcluir.ToolTipText = "Excluir dados do cliente";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair
             // 
@@ -306,6 +312,7 @@ namespace MaterialConstrucao
             this.btnSair.Size = new System.Drawing.Size(54, 54);
             this.btnSair.Text = "toolStripButton6";
             this.btnSair.ToolTipText = "Sair do cadastro";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // CadastroFuncionario
             // 
@@ -330,6 +337,7 @@ namespace MaterialConstrucao
             this.Controls.Add(this.txtNomeF);
             this.Name = "CadastroFuncionario";
             this.Text = "CadastroFuncionario";
+            this.Load += new System.EventHandler(this.CadastroFuncionario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosFuncionario)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
