@@ -47,10 +47,11 @@ namespace MaterialConstrucao
 
         public void inserir()
         {
-            string sql = "INSERT INTO funcionario(CPF, nome, telefone) Values (";
+            string sql = "INSERT INTO funcionario(CPF, nome, telefone) VALUES (";
             sql += "'" + CPF + "', ";
             sql += "'" + nomeFuncionario + "', ";
-            sql += "'" + telefone + "')";
+            sql += "'" + telefone + "'";
+            sql += ")";
             conexaoFunc.executarSql(sql);
         }
 
@@ -62,7 +63,7 @@ namespace MaterialConstrucao
 
         public void update()
         {
-            string sql = "UPDATE cliente SET ";
+            string sql = "UPDATE funcionario SET ";
             sql += "nome = '" + nomeFuncionario + "', ";
             sql += "telefone = '" + telefone + "'";
             sql += " WHERE CPF = '" + CPF + "';";

@@ -44,5 +44,12 @@ namespace MaterialConstrucao
             funcionario.MdiParent = this;
             funcionario.Show();
         }
+
+        private void PedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastroPedido fPedido = new CadastroPedido();
+            fPedido.MdiParent = this;
+            fPedido.Show();
+        }
     }
 }

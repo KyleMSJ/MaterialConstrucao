@@ -13,7 +13,8 @@ namespace MaterialConstrucao
     public partial class CadastroCliente : Form
     {
         csCliente client = new csCliente();
-        
+
+        bool novoCliente = false;
         private void habilitaControles(bool status)
         {
             txtNomeC.Enabled = status;
@@ -21,18 +22,19 @@ namespace MaterialConstrucao
             txtCidadeC.Enabled = status;
             txtCPF_C.Enabled = status;
             txtCEP_C.Enabled = status;
-            txtTelefoneC.Enabled = status;
+            txtTelefone_C.Enabled = status;
             txtNumero.Enabled = status;
         }
 
         private void limparControles()
         {
+           // client.SetCPFCliente(0.ToString()); -> arrumar
             txtNomeC.Text = "";
             cboSiglaC.SelectedIndex = -1;
             txtCidadeC.Text = "";
             txtCPF_C.Text = "";
             txtCEP_C.Text = "";
-            txtTelefoneC.Text = "";
+            txtTelefone_C.Text = "";
             txtNumero.Text = "";
         }
 
@@ -45,6 +47,7 @@ namespace MaterialConstrucao
             btnSalvar.Enabled = !status;
             btnCancelar.Enabled = !status;
         }
+
         private void formataGrid()
         {
             grdDadosCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -81,12 +84,12 @@ namespace MaterialConstrucao
             client.SetCPFCliente(txtCPF_C.Text);
             client.SetCEPCliente(txtCEP_C.Text);
             client.SetNomeCliente(txtNomeC.Text);
-            client.SetTelefoneCliente(txtTelefoneC.Text);
+            client.SetTelefoneCliente(txtTelefone_C.Text);
             client.SetCidadeCliente(txtCidadeC.Text);
             client.SetEstadoCliente(Convert.ToInt16(cboSiglaC.SelectedIndex));
             client.SetNumeroCliente(txtNumero.Text);
 
-            if (client.GetCPFCliente() == "")
+            if (novoCliente == true)
             { 
                 client.inserir();
             }
@@ -94,6 +97,7 @@ namespace MaterialConstrucao
             {
                 client.update();
             }
+            novoCliente = false;
         }
         private void preencheDadosControles()
         {
@@ -103,7 +107,7 @@ namespace MaterialConstrucao
             txtCidadeC.Text = client.GetCidadeCliente();
             txtNumero.Text = client.GetNumeroCliente();
             txtCEP_C.Text = client.GetCEPCliente();
-            txtTelefoneC.Text = client.GetTelefoneCliente();
+            txtTelefone_C.Text = client.GetTelefoneCliente();
             txtCPF_C.Text = client.GetCPFCliente();
 
             cboSiglaC.SelectedIndex = client.GetEstadoCliente();
@@ -126,12 +130,15 @@ namespace MaterialConstrucao
             habilitaControles(true);
             limparControles();
             gerenciaBotoesBarra(false);
+            novoCliente = true;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             habilitaControles(true);
             gerenciaBotoesBarra(false);
+            novoCliente = false;
+            txtCPF_C.Enabled = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -217,8 +224,12 @@ namespace MaterialConstrucao
 
         private void grdDados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            client.SetCPFCliente((grdDadosCliente.Rows[grdDadosCliente.CurrentRow.Index].Cells[0].Value.ToString()));
-            preencheDadosControles();
+            if (grdDadosCliente.CurrentRow != null)
+            {
+                client.SetCPFCliente((grdDadosCliente.Rows[grdDadosCliente.CurrentRow.Index].Cells[0].Value.ToString()));
+                preencheDadosControles();
+            }
+                
         }
     }
 }

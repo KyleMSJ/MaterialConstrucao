@@ -14,6 +14,7 @@ namespace MaterialConstrucao
     {
         csFuncionario func = new csFuncionario();
 
+        bool novoFuncionario = false;
         private void habilitaControles(bool status)
         {
             txtNomeF.Enabled = status;
@@ -44,10 +45,10 @@ namespace MaterialConstrucao
 
             grdDadosFuncionario.Columns[0].HeaderText = "CPF";
             grdDadosFuncionario.Columns[1].HeaderText = "Nome";
-            grdDadosFuncionario.Columns[2].HeaderText = "CEP";
+            grdDadosFuncionario.Columns[2].HeaderText = "Telefone";
 
-            grdDadosFuncionario.Columns[0].Width = 30;
-            grdDadosFuncionario.Columns[1].Width = 70;
+            grdDadosFuncionario.Columns[0].Width = 100;
+            grdDadosFuncionario.Columns[1].Width = 130;
             grdDadosFuncionario.Columns[2].Width = 260;
         }
 
@@ -68,7 +69,7 @@ namespace MaterialConstrucao
             func.setNomeFuncionario(txtNomeF.Text);
             func.setTelefoneFuncionario(txtTelefoneF.Text);
 
-            if (func.getCPF_Funcionario() == "") 
+            if (novoFuncionario == true) 
             {
                 func.inserir();
             }
@@ -76,6 +77,7 @@ namespace MaterialConstrucao
             {
                 func.update();
             }
+            novoFuncionario = false;
         }
 
         private void preencheDadosControles()
@@ -104,12 +106,15 @@ namespace MaterialConstrucao
             habilitaControles(true);
             limparControles();
             gerenciaBotoesBarra(false);
+            novoFuncionario = true;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             habilitaControles(true);
             gerenciaBotoesBarra(false);
+            novoFuncionario = false;
+            txtCPF_F.Enabled = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -181,8 +186,11 @@ namespace MaterialConstrucao
 
         private void grdDadosFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            func.setCPF_Funcionario(grdDadosFuncionario.Rows[grdDadosFuncionario.CurrentRow.Index].Cells[0].Value.ToString());
-            preencheDadosControles();
+            if (grdDadosFuncionario.CurrentRow != null)
+            {
+                func.setCPF_Funcionario((grdDadosFuncionario.Rows[grdDadosFuncionario.CurrentRow.Index].Cells[0].Value.ToString()));
+                preencheDadosControles();
+            }
         }
     }
 }

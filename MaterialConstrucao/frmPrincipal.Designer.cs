@@ -31,6 +31,7 @@ namespace MaterialConstrucao
         {
             this.CadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -39,7 +40,6 @@ namespace MaterialConstrucao
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,13 @@ namespace MaterialConstrucao
             this.ClienteToolStripMenuItem.Text = "Cliente";
             this.ClienteToolStripMenuItem.Click += new System.EventHandler(this.ClienteToolStripMenuItem_Click);
             // 
+            // funcionárioToolStripMenuItem
+            // 
+            this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
+            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
+            this.funcionárioToolStripMenuItem.Text = "Funcionário";
+            this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
+            // 
             // ProdutoToolStripMenuItem
             // 
             this.ProdutoToolStripMenuItem.Name = "ProdutoToolStripMenuItem";
@@ -75,6 +82,7 @@ namespace MaterialConstrucao
             this.PedidoToolStripMenuItem.Name = "PedidoToolStripMenuItem";
             this.PedidoToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.PedidoToolStripMenuItem.Text = "Pedido";
+            this.PedidoToolStripMenuItem.Click += new System.EventHandler(this.PedidoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -120,13 +128,6 @@ namespace MaterialConstrucao
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
-            // 
-            // funcionárioToolStripMenuItem
-            // 
-            this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
-            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.funcionárioToolStripMenuItem.Text = "Funcionário";
-            this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 

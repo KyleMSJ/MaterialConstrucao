@@ -53,6 +53,12 @@
     <Compile Include="CadastroFuncionario.Designer.cs">
       <DependentUpon>CadastroFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastroPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroPedido.Designer.cs">
+      <DependentUpon>CadastroPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,7 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcionario.cs" />
+    <Compile Include="Pedido.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroFuncionario.resx">
       <DependentUpon>CadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroPedido.resx">
+      <DependentUpon>CadastroPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>

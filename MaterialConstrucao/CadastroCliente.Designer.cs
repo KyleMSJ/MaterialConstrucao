@@ -35,13 +35,10 @@ namespace MaterialConstrucao
             this.lblCidadeC = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtCidadeC = new System.Windows.Forms.TextBox();
-            this.txtCEP_C = new System.Windows.Forms.TextBox();
             this.lblNumeroC = new System.Windows.Forms.Label();
             this.lblCEP_C = new System.Windows.Forms.Label();
             this.lblTelefoneC = new System.Windows.Forms.Label();
-            this.txtTelefoneC = new System.Windows.Forms.TextBox();
             this.lblCPF_C = new System.Windows.Forms.Label();
-            this.txtCPF_C = new System.Windows.Forms.TextBox();
             this.lblNomeC = new System.Windows.Forms.Label();
             this.grdDadosCliente = new System.Windows.Forms.DataGridView();
             this.txtNomeC = new System.Windows.Forms.TextBox();
@@ -52,6 +49,9 @@ namespace MaterialConstrucao
             this.btnSalvar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnSair = new System.Windows.Forms.ToolStripButton();
+            this.txtTelefone_C = new System.Windows.Forms.MaskedTextBox();
+            this.txtCPF_C = new System.Windows.Forms.MaskedTextBox();
+            this.txtCEP_C = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosCliente)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,7 @@ namespace MaterialConstrucao
             "SP",
             "SE",
             "TO"});
-            this.cboSiglaC.Location = new System.Drawing.Point(373, 211);
+            this.cboSiglaC.Location = new System.Drawing.Point(372, 211);
             this.cboSiglaC.Name = "cboSiglaC";
             this.cboSiglaC.Size = new System.Drawing.Size(56, 21);
             this.cboSiglaC.TabIndex = 27;
@@ -116,10 +116,10 @@ namespace MaterialConstrucao
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(575, 268);
+            this.txtNumero.Location = new System.Drawing.Point(565, 268);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(147, 20);
+            this.txtNumero.Size = new System.Drawing.Size(72, 20);
             this.txtNumero.TabIndex = 22;
             // 
             // txtCidadeC
@@ -130,19 +130,11 @@ namespace MaterialConstrucao
             this.txtCidadeC.Size = new System.Drawing.Size(225, 20);
             this.txtCidadeC.TabIndex = 23;
             // 
-            // txtCEP_C
-            // 
-            this.txtCEP_C.Location = new System.Drawing.Point(373, 268);
-            this.txtCEP_C.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCEP_C.Name = "txtCEP_C";
-            this.txtCEP_C.Size = new System.Drawing.Size(185, 20);
-            this.txtCEP_C.TabIndex = 24;
-            // 
             // lblNumeroC
             // 
             this.lblNumeroC.AutoSize = true;
             this.lblNumeroC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroC.Location = new System.Drawing.Point(571, 243);
+            this.lblNumeroC.Location = new System.Drawing.Point(561, 243);
             this.lblNumeroC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumeroC.Name = "lblNumeroC";
             this.lblNumeroC.Size = new System.Drawing.Size(151, 20);
@@ -153,7 +145,7 @@ namespace MaterialConstrucao
             // 
             this.lblCEP_C.AutoSize = true;
             this.lblCEP_C.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCEP_C.Location = new System.Drawing.Point(369, 243);
+            this.lblCEP_C.Location = new System.Drawing.Point(368, 243);
             this.lblCEP_C.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCEP_C.Name = "lblCEP_C";
             this.lblCEP_C.Size = new System.Drawing.Size(41, 20);
@@ -164,20 +156,12 @@ namespace MaterialConstrucao
             // 
             this.lblTelefoneC.AutoSize = true;
             this.lblTelefoneC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefoneC.Location = new System.Drawing.Point(548, 129);
+            this.lblTelefoneC.Location = new System.Drawing.Point(458, 129);
             this.lblTelefoneC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefoneC.Name = "lblTelefoneC";
             this.lblTelefoneC.Size = new System.Drawing.Size(71, 20);
             this.lblTelefoneC.TabIndex = 19;
             this.lblTelefoneC.Text = "Telefone";
-            // 
-            // txtTelefoneC
-            // 
-            this.txtTelefoneC.Location = new System.Drawing.Point(552, 154);
-            this.txtTelefoneC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTelefoneC.Name = "txtTelefoneC";
-            this.txtTelefoneC.Size = new System.Drawing.Size(233, 20);
-            this.txtTelefoneC.TabIndex = 18;
             // 
             // lblCPF_C
             // 
@@ -189,14 +173,6 @@ namespace MaterialConstrucao
             this.lblCPF_C.Size = new System.Drawing.Size(40, 20);
             this.lblCPF_C.TabIndex = 17;
             this.lblCPF_C.Text = "CPF";
-            // 
-            // txtCPF_C
-            // 
-            this.txtCPF_C.Location = new System.Drawing.Point(373, 154);
-            this.txtCPF_C.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCPF_C.Name = "txtCPF_C";
-            this.txtCPF_C.Size = new System.Drawing.Size(171, 20);
-            this.txtCPF_C.TabIndex = 16;
             // 
             // lblNomeC
             // 
@@ -314,11 +290,37 @@ namespace MaterialConstrucao
             this.btnSair.ToolTipText = "Sair do cadastro";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // txtTelefone_C
+            // 
+            this.txtTelefone_C.Location = new System.Drawing.Point(462, 154);
+            this.txtTelefone_C.Mask = "(00)0000-9999";
+            this.txtTelefone_C.Name = "txtTelefone_C";
+            this.txtTelefone_C.Size = new System.Drawing.Size(83, 20);
+            this.txtTelefone_C.TabIndex = 28;
+            // 
+            // txtCPF_C
+            // 
+            this.txtCPF_C.Location = new System.Drawing.Point(373, 154);
+            this.txtCPF_C.Mask = "000.000.000-00";
+            this.txtCPF_C.Name = "txtCPF_C";
+            this.txtCPF_C.Size = new System.Drawing.Size(83, 20);
+            this.txtCPF_C.TabIndex = 28;
+            // 
+            // txtCEP_C
+            // 
+            this.txtCEP_C.Location = new System.Drawing.Point(372, 268);
+            this.txtCEP_C.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCEP_C.Name = "txtCEP_C";
+            this.txtCEP_C.Size = new System.Drawing.Size(185, 20);
+            this.txtCEP_C.TabIndex = 24;
+            // 
             // CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 414);
+            this.Controls.Add(this.txtCPF_C);
+            this.Controls.Add(this.txtTelefone_C);
             this.Controls.Add(this.cboSiglaC);
             this.Controls.Add(this.lblSiglaC);
             this.Controls.Add(this.lblCidadeC);
@@ -328,9 +330,7 @@ namespace MaterialConstrucao
             this.Controls.Add(this.lblNumeroC);
             this.Controls.Add(this.lblCEP_C);
             this.Controls.Add(this.lblTelefoneC);
-            this.Controls.Add(this.txtTelefoneC);
             this.Controls.Add(this.lblCPF_C);
-            this.Controls.Add(this.txtCPF_C);
             this.Controls.Add(this.lblNomeC);
             this.Controls.Add(this.grdDadosCliente);
             this.Controls.Add(this.txtNomeC);
@@ -353,13 +353,10 @@ namespace MaterialConstrucao
         private System.Windows.Forms.Label lblCidadeC;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.TextBox txtCidadeC;
-        private System.Windows.Forms.TextBox txtCEP_C;
         private System.Windows.Forms.Label lblNumeroC;
         private System.Windows.Forms.Label lblCEP_C;
         private System.Windows.Forms.Label lblTelefoneC;
-        private System.Windows.Forms.TextBox txtTelefoneC;
         private System.Windows.Forms.Label lblCPF_C;
-        private System.Windows.Forms.TextBox txtCPF_C;
         private System.Windows.Forms.Label lblNomeC;
         private System.Windows.Forms.DataGridView grdDadosCliente;
         private System.Windows.Forms.TextBox txtNomeC;
@@ -370,6 +367,9 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ToolStripButton btnSalvar;
         private System.Windows.Forms.ToolStripButton btnExcluir;
         private System.Windows.Forms.ToolStripButton btnSair;
+        private System.Windows.Forms.MaskedTextBox txtTelefone_C;
+        private System.Windows.Forms.MaskedTextBox txtCPF_C;
+        private System.Windows.Forms.TextBox txtCEP_C;
     }
 }
 

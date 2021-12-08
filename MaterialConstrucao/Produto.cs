@@ -70,15 +70,12 @@ namespace MaterialConstrucao
 
         public void inserir()
         {
-            string sql = "INSERT INTO produto(numero, nome, descricao,";
-            sql += "qtd, valor)";
-            sql += " VALUES (" ;
+            string sql = "INSERT INTO produto VALUES (";
             sql += "'" + Cod + "', ";
             sql += "'" + nomeProduto + "', ";
             sql += "'" + descricao + "', ";
-            sql += + qtd + ", ";
-            sql += + preco + ", ";
-            sql += ")";
+            sql += qtd.ToString() + ", ";
+            sql += preco.ToString() + ")";
             conexaoProd.executarSql(sql);
         }
 
@@ -93,9 +90,9 @@ namespace MaterialConstrucao
             string sql = "UPDATE produto SET ";
             sql += "nome = '" + nomeProduto + "', ";
             sql += "descricao = '" + descricao + "', ";
-            sql += "qtd = " + qtd + ", ";
-            sql += "valor = " + preco + ", ";
-            sql += " WHERE numero = " + Cod + ";";
+            sql += "qtd = " + qtd.ToString() + ", ";
+            sql += "valor = " + preco.ToString() + ", ";
+            sql += " WHERE numero = '" + Cod + "';";
             conexaoProd.executarSql(sql);
         }
 
@@ -103,7 +100,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable tabela = new DataTable();
-            string sql = "Select numero, nome, descricao, qtd, valor from produto;";
+            string sql = "Select numero, nome, descricao, qtd, preco from produto;";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(tabela);
             return tabela;
@@ -113,7 +110,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
-            string sql = "SELECT nome, descricao, qtd, valor FROM produto WHERE numero = " + Cod + ";";
+            string sql = "SELECT nome, descricao, qtd, preco FROM produto WHERE numero = " + Cod + ";";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(dataSet);
 

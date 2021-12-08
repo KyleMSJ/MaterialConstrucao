@@ -13,7 +13,7 @@ namespace MaterialConstrucao
     public partial class CadastroProduto : Form
     {
         csProduto prod = new csProduto();
-     
+        bool novoProduto = false;
         public CadastroProduto()
         {
             InitializeComponent();
@@ -75,6 +75,16 @@ namespace MaterialConstrucao
             prod.setNomeProduto(txtNome.Text);
             prod.setQtdProduto(Convert.ToDouble((txtQuantidade.Text)));
             prod.setValorProduto(Convert.ToDouble(txtValor.Text));
+
+            if (novoProduto == true)
+            {
+                prod.inserir();
+            }
+            else
+            {
+                prod.update();
+            }
+            novoProduto = false;
         }
 
         private void preencheDadosControles()
@@ -165,7 +175,7 @@ namespace MaterialConstrucao
 
         private bool validaDados()
         {
-            if (txtNumero.Text.Trim().Length <= 5)
+            if (txtNumero.Text.Trim().Length < 3)
             {
                 MessageBox.Show("Código do Produto é obrigatório, informe!", "Aviso!!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
