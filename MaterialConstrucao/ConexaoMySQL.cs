@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.IO;
-using MySql.Data.MySqlClient;
 
 namespace MaterialConstrucao
 {
@@ -26,7 +26,6 @@ namespace MaterialConstrucao
                 string linha = "";
 
 
-                // verifica se o arquivo existe
                 if (System.IO.File.Exists(caminho))
                 {
                     StreamReader arquivo = new StreamReader(caminho);
@@ -36,7 +35,7 @@ namespace MaterialConstrucao
                         if (linha.Contains("servidor = "))
                         {
                             servidor = linha.Substring(11, linha.Length - 11);
-                            // descrição do funcionamento da linha de código
+                            
                         }
                         else if (linha.Contains("database = "))
                         {
@@ -54,14 +53,14 @@ namespace MaterialConstrucao
 
                 }
             }
-            private void conectaMySql() // retorna a conexão com o banco de dados
+            private void conectaMySql() 
             {
-                try // try-catch: tratamento de erros
+                try 
                 {
                     dadosConexao();
                     conn = new MySqlConnection("server=" + servidor + ";uid=" + usuario + ";database=" + database + ";pwd= " + senha + ";SSL Mode = NONE");
                     // servidor do banco (local); o banco de dados; usuário (raíz); senha (vazia por conta do xampp); protocolo de segurança 
-                    conn.Open(); // abre a conexão
+                    conn.Open(); 
                 }
                 catch (Exception e)
                 {

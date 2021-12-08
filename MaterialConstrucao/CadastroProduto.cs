@@ -70,7 +70,7 @@ namespace MaterialConstrucao
 
         private void salvarProduto()
         {
-            prod.setCodProduto(Convert.ToInt32(txtNumero.Text));
+            prod.setCodProduto(txtNumero.Text);
             prod.setDescricaoProduto(txtDescricao.Text);
             prod.setNomeProduto(txtNome.Text);
             prod.setQtdProduto(Convert.ToDouble((txtQuantidade.Text)));
@@ -91,7 +91,7 @@ namespace MaterialConstrucao
 
         private void grdDadosProduto_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            prod.setCodProduto(Convert.ToInt32(grdDadosProduto.Rows[grdDadosProduto.CurrentRow.Index].Cells[0].Value.ToString()));
+            prod.setCodProduto(grdDadosProduto.Rows[grdDadosProduto.CurrentRow.Index].Cells[0].Value.ToString());
             preencheDadosControles();
         }
 
@@ -140,7 +140,7 @@ namespace MaterialConstrucao
 
             private void btnExcluir_Click(object sender, EventArgs e)
             {
-                if (prod.getCodProduto() != 0)
+                if (prod.getCodProduto() != "")
                 {
                     DialogResult retorno = MessageBox.Show("Deseja excluir os dados do produto selecionado?", "Exclusão",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);

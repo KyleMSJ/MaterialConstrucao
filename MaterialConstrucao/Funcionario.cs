@@ -50,7 +50,7 @@ namespace MaterialConstrucao
             string sql = "INSERT INTO funcionario(CPF, nome, telefone) Values (";
             sql += "'" + CPF + "', ";
             sql += "'" + nomeFuncionario + "', ";
-            sql += "'" + telefone + "', ";
+            sql += "'" + telefone + "')";
             conexaoFunc.executarSql(sql);
         }
 
@@ -63,9 +63,9 @@ namespace MaterialConstrucao
         public void update()
         {
             string sql = "UPDATE cliente SET ";
-            sql += "CPF '" + CPF + "', ";
-            sql += "nome '" + nomeFuncionario + "', ";
-            sql += "telefone '" + telefone + "', ";
+            sql += "nome = '" + nomeFuncionario + "', ";
+            sql += "telefone = '" + telefone + "'";
+            sql += " WHERE CPF = '" + CPF + "';";
             conexaoFunc.executarSql(sql);
         }
 
@@ -83,13 +83,12 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
-            string sql = "SELECT nome, CEP, telefone FROM funcionario WHERE CPF = '" + CPF + "';";
+            string sql = "SELECT nome, telefone FROM funcionario WHERE CPF = '" + CPF + "';";
             adapter = conexaoFunc.executaRetornaDados(sql);
             adapter.Fill(dataSet);
 
-            CPF = dataSet.Tables[0].Rows[0][0].ToString();
-            nomeFuncionario = dataSet.Tables[0].Rows[0][1].ToString();
-            telefone = dataSet.Tables[0].Rows[0][2].ToString();
+            nomeFuncionario = dataSet.Tables[0].Rows[0][0].ToString();
+            telefone = dataSet.Tables[0].Rows[0][1].ToString();
         }
     }
 }

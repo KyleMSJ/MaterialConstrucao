@@ -37,5 +37,12 @@ namespace MaterialConstrucao
             fProduto.MdiParent = this;
             fProduto.Show();
         }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastroFuncionario funcionario = new CadastroFuncionario();
+            funcionario.MdiParent = this;
+            funcionario.Show();
+        }
     }
 }

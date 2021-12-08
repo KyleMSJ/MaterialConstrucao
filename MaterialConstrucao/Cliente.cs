@@ -90,7 +90,7 @@ namespace MaterialConstrucao
 			sql += "'" + nomeCliente + "', ";
 			sql += "'" + CEP + "', ";
 			sql += "'" + cidade + "', ";
-			sql += + sigla + ", ";
+			sql += sigla + ", ";
 			sql += "'" + numero + "', ";
 			sql += "'" + telefone + "'";
 			sql += ")";

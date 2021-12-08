@@ -30,14 +30,6 @@ namespace MaterialConstrucao
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroFuncionario));
-            this.cboSiglaF = new System.Windows.Forms.ComboBox();
-            this.lblSiglaF = new System.Windows.Forms.Label();
-            this.lblCidadeF = new System.Windows.Forms.Label();
-            this.txtNumeroF = new System.Windows.Forms.TextBox();
-            this.txtCidadeF = new System.Windows.Forms.TextBox();
-            this.txtCEP_F = new System.Windows.Forms.TextBox();
-            this.lblNumeroF = new System.Windows.Forms.Label();
-            this.lblCEP_F = new System.Windows.Forms.Label();
             this.lblTelefoneF = new System.Windows.Forms.Label();
             this.txtTelefoneF = new System.Windows.Forms.TextBox();
             this.lblCPF_F = new System.Windows.Forms.Label();
@@ -55,110 +47,6 @@ namespace MaterialConstrucao
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosFuncionario)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cboSiglaF
-            // 
-            this.cboSiglaF.FormattingEnabled = true;
-            this.cboSiglaF.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cboSiglaF.Location = new System.Drawing.Point(361, 197);
-            this.cboSiglaF.Name = "cboSiglaF";
-            this.cboSiglaF.Size = new System.Drawing.Size(56, 21);
-            this.cboSiglaF.TabIndex = 42;
-            // 
-            // lblSiglaF
-            // 
-            this.lblSiglaF.AutoSize = true;
-            this.lblSiglaF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSiglaF.Location = new System.Drawing.Point(357, 174);
-            this.lblSiglaF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSiglaF.Name = "lblSiglaF";
-            this.lblSiglaF.Size = new System.Drawing.Size(60, 20);
-            this.lblSiglaF.TabIndex = 40;
-            this.lblSiglaF.Text = "Estado";
-            // 
-            // lblCidadeF
-            // 
-            this.lblCidadeF.AutoSize = true;
-            this.lblCidadeF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCidadeF.Location = new System.Drawing.Point(425, 174);
-            this.lblCidadeF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCidadeF.Name = "lblCidadeF";
-            this.lblCidadeF.Size = new System.Drawing.Size(59, 20);
-            this.lblCidadeF.TabIndex = 41;
-            this.lblCidadeF.Text = "Cidade";
-            // 
-            // txtNumeroF
-            // 
-            this.txtNumeroF.Location = new System.Drawing.Point(563, 254);
-            this.txtNumeroF.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNumeroF.Name = "txtNumeroF";
-            this.txtNumeroF.Size = new System.Drawing.Size(147, 20);
-            this.txtNumeroF.TabIndex = 37;
-            // 
-            // txtCidadeF
-            // 
-            this.txtCidadeF.Location = new System.Drawing.Point(429, 197);
-            this.txtCidadeF.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCidadeF.Name = "txtCidadeF";
-            this.txtCidadeF.Size = new System.Drawing.Size(225, 20);
-            this.txtCidadeF.TabIndex = 38;
-            // 
-            // txtCEP_F
-            // 
-            this.txtCEP_F.Location = new System.Drawing.Point(361, 254);
-            this.txtCEP_F.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCEP_F.Name = "txtCEP_F";
-            this.txtCEP_F.Size = new System.Drawing.Size(185, 20);
-            this.txtCEP_F.TabIndex = 39;
-            // 
-            // lblNumeroF
-            // 
-            this.lblNumeroF.AutoSize = true;
-            this.lblNumeroF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroF.Location = new System.Drawing.Point(559, 229);
-            this.lblNumeroF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNumeroF.Name = "lblNumeroF";
-            this.lblNumeroF.Size = new System.Drawing.Size(151, 20);
-            this.lblNumeroF.TabIndex = 35;
-            this.lblNumeroF.Text = "Número Residencial";
-            // 
-            // lblCEP_F
-            // 
-            this.lblCEP_F.AutoSize = true;
-            this.lblCEP_F.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCEP_F.Location = new System.Drawing.Point(357, 229);
-            this.lblCEP_F.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCEP_F.Name = "lblCEP_F";
-            this.lblCEP_F.Size = new System.Drawing.Size(41, 20);
-            this.lblCEP_F.TabIndex = 36;
-            this.lblCEP_F.Text = "CEP";
             // 
             // lblTelefoneF
             // 
@@ -320,14 +208,6 @@ namespace MaterialConstrucao
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.cboSiglaF);
-            this.Controls.Add(this.lblSiglaF);
-            this.Controls.Add(this.lblCidadeF);
-            this.Controls.Add(this.txtNumeroF);
-            this.Controls.Add(this.txtCidadeF);
-            this.Controls.Add(this.txtCEP_F);
-            this.Controls.Add(this.lblNumeroF);
-            this.Controls.Add(this.lblCEP_F);
             this.Controls.Add(this.lblTelefoneF);
             this.Controls.Add(this.txtTelefoneF);
             this.Controls.Add(this.lblCPF_F);
@@ -347,15 +227,6 @@ namespace MaterialConstrucao
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cboSiglaF;
-        private System.Windows.Forms.Label lblSiglaF;
-        private System.Windows.Forms.Label lblCidadeF;
-        private System.Windows.Forms.TextBox txtNumeroF;
-        private System.Windows.Forms.TextBox txtCidadeF;
-        private System.Windows.Forms.TextBox txtCEP_F;
-        private System.Windows.Forms.Label lblNumeroF;
-        private System.Windows.Forms.Label lblCEP_F;
         private System.Windows.Forms.Label lblTelefoneF;
         private System.Windows.Forms.TextBox txtTelefoneF;
         private System.Windows.Forms.Label lblCPF_F;

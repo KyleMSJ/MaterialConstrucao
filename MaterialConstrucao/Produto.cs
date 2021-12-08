@@ -10,7 +10,7 @@ namespace MaterialConstrucao
 {
     public class csProduto
     {
-        private Int32 Cod;
+        private string Cod;
         private string nomeProduto;
         private string descricao;
         private double qtd;
@@ -18,12 +18,12 @@ namespace MaterialConstrucao
 
         private ConexaoMySQL conexaoProd = new ConexaoMySQL();
 
-        public void setCodProduto(Int32 valor)
+        public void setCodProduto(string valor)
         {
             Cod = valor;
         }
 
-        public Int32 getCodProduto()
+        public string getCodProduto()
         {
             return Cod;
         }
@@ -73,7 +73,7 @@ namespace MaterialConstrucao
             string sql = "INSERT INTO produto(numero, nome, descricao,";
             sql += "qtd, valor)";
             sql += " VALUES (" ;
-            sql +=  + Cod + ", ";
+            sql += "'" + Cod + "', ";
             sql += "'" + nomeProduto + "', ";
             sql += "'" + descricao + "', ";
             sql += + qtd + ", ";
@@ -117,11 +117,10 @@ namespace MaterialConstrucao
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(dataSet);
 
-            Cod = Convert.ToInt32(dataSet.Tables[0].Rows[0][0].ToString()); // Linha 0, coluna 0
-            nomeProduto = dataSet.Tables[0].Rows[0][1].ToString(); // Linha 0, coluna 1 
-            descricao = dataSet.Tables[0].Rows[0][2].ToString();
-            qtd = Convert.ToInt64(dataSet.Tables[0].Rows[0][3].ToString());
-            preco = Convert.ToInt64(dataSet.Tables[0].Rows[0][4].ToString());
+            nomeProduto = dataSet.Tables[0].Rows[0][0].ToString(); 
+            descricao = dataSet.Tables[0].Rows[0][1].ToString();
+            qtd = Convert.ToDouble(dataSet.Tables[0].Rows[0][2].ToString());
+            preco = Convert.ToDouble(dataSet.Tables[0].Rows[0][3].ToString());
         }
     }
 }

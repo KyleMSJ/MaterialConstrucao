@@ -17,23 +17,15 @@ namespace MaterialConstrucao
         private void habilitaControles(bool status)
         {
             txtNomeF.Enabled = status;
-            cboSiglaF.Enabled = status;
-            txtCidadeF.Enabled = status;
             txtCPF_F.Enabled = status;
-            txtCEP_F.Enabled = status;
             txtTelefoneF.Enabled = status;
-            txtNumeroF.Enabled = status;
         }
 
         private void limparControles()
         {
             txtNomeF.Text = "";
-            cboSiglaF.SelectedIndex = -1;
-            txtCidadeF.Text = "";
             txtCPF_F.Text = "";
-            txtCEP_F.Text = "";
             txtTelefoneF.Text = "";
-            txtNumeroF.Text = "";
         }
 
         private void gerenciaBotoesBarra(bool status)
@@ -67,17 +59,32 @@ namespace MaterialConstrucao
 
         private void excluiFuncionario()
         {
-
+            func.delete();
         }
 
         private void salvarFuncionario()
         {
+            func.setCPF_Funcionario(txtCPF_F.Text);
+            func.setNomeFuncionario(txtNomeF.Text);
+            func.setTelefoneFuncionario(txtTelefoneF.Text);
 
+            if (func.getCPF_Funcionario() == "") 
+            {
+                func.inserir();
+            }
+            else
+            {
+                func.update();
+            }
         }
 
         private void preencheDadosControles()
         {
+            func.selectFuncionario();
 
+            txtCPF_F.Text = func.getCPF_Funcionario();
+            txtNomeF.Text = func.getNomeFuncionario();
+            txtTelefoneF.Text = func.getTelefoneFuncionario();
         }
 
         public CadastroFuncionario()
@@ -169,26 +176,12 @@ namespace MaterialConstrucao
                 txtCPF_F.Focus();
                 return false;
             }
-            if (txtCEP_F.Text.Trim().Length != 9)
-            {
-                MessageBox.Show("CEP é obrigatório, informe!", "Aviso!!",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCEP_F.Focus();
-                return false;
-            }
-            if (txtCidadeF.Text.Trim().Length <= 2)
-            {
-                MessageBox.Show("Nome da Cidade é obrigatório, informe!", "Aviso!!",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCidadeF.Focus();
-                return false;
-            }
             return true;
         }
 
         private void grdDadosFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            func.setCPF_Funcionario(grdDadosFuncionario.Rows[grdDadosFuncionario.CurrentRow.Index].Cells[0].Value.ToString());
             preencheDadosControles();
         }
     }

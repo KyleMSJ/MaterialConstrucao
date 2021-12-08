@@ -205,7 +205,7 @@ namespace MaterialConstrucao
                 txtCEP_C.Focus(); 
                 return false;
             }
-            if (txtCidadeC.Text.Trim().Length <= 2)
+            if (txtCidadeC.Text.Trim().Length <= 3)
             {
                 MessageBox.Show("Nome da Cidade é obrigatório, informe!", "Aviso!!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
