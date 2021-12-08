@@ -39,10 +39,8 @@ namespace MaterialConstrucao
             this.btnSair = new System.Windows.Forms.ToolStripButton();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.lblQuantidade = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.grdDadosProduto = new System.Windows.Forms.DataGridView();
@@ -156,20 +154,9 @@ namespace MaterialConstrucao
             this.txtDescricao.Size = new System.Drawing.Size(385, 212);
             this.txtDescricao.TabIndex = 37;
             // 
-            // lblQuantidade
-            // 
-            this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantidade.Location = new System.Drawing.Point(398, 146);
-            this.lblQuantidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblQuantidade.Name = "lblQuantidade";
-            this.lblQuantidade.Size = new System.Drawing.Size(92, 20);
-            this.lblQuantidade.TabIndex = 33;
-            this.lblQuantidade.Text = "Quantidade";
-            // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(519, 171);
+            this.txtValor.Location = new System.Drawing.Point(712, 121);
             this.txtValor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(75, 20);
@@ -179,20 +166,12 @@ namespace MaterialConstrucao
             // 
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValor.Location = new System.Drawing.Point(515, 146);
+            this.lblValor.Location = new System.Drawing.Point(708, 96);
             this.lblValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(50, 20);
             this.lblValor.TabIndex = 31;
             this.lblValor.Text = "Preço";
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.Location = new System.Drawing.Point(402, 171);
-            this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(88, 20);
-            this.txtQuantidade.TabIndex = 30;
             // 
             // lblNome
             // 
@@ -210,7 +189,7 @@ namespace MaterialConstrucao
             this.txtNome.Location = new System.Drawing.Point(519, 121);
             this.txtNome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(268, 20);
+            this.txtNome.Size = new System.Drawing.Size(185, 20);
             this.txtNome.TabIndex = 28;
             // 
             // grdDadosProduto
@@ -253,10 +232,8 @@ namespace MaterialConstrucao
             this.Controls.Add(this.grdDadosProduto);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(this.lblQuantidade);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.lblValor);
-            this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNumero);
@@ -283,10 +260,8 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ToolStripButton btnSair;
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Label lblQuantidade;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
-        private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.DataGridView grdDadosProduto;

@@ -13,7 +13,6 @@ namespace MaterialConstrucao
         private string Cod;
         private string nomeProduto;
         private string descricao;
-        private double qtd;
         private double preco;
 
         private ConexaoMySQL conexaoProd = new ConexaoMySQL();
@@ -48,16 +47,6 @@ namespace MaterialConstrucao
             return descricao;
         }
 
-        public void setQtdProduto(double valor)
-        {
-            qtd = valor;
-        }
-
-        public double getQtdProduto()
-        {
-            return qtd;
-        }
-
         public void setValorProduto(double valor)
         {
             preco = valor;
@@ -70,11 +59,10 @@ namespace MaterialConstrucao
 
         public void inserir()
         {
-            string sql = "INSERT INTO produto VALUES (";
+            string sql = "INSERT INTO produto (numero, nome, descricao, preco) VALUES (";
             sql += "'" + Cod + "', ";
             sql += "'" + nomeProduto + "', ";
             sql += "'" + descricao + "', ";
-            sql += qtd.ToString() + ", ";
             sql += preco.ToString() + ")";
             conexaoProd.executarSql(sql);
         }
@@ -90,9 +78,8 @@ namespace MaterialConstrucao
             string sql = "UPDATE produto SET ";
             sql += "nome = '" + nomeProduto + "', ";
             sql += "descricao = '" + descricao + "', ";
-            sql += "qtd = " + qtd.ToString() + ", ";
-            sql += "valor = " + preco.ToString() + ", ";
-            sql += " WHERE numero = '" + Cod + "';";
+            sql += "preco = " + preco.ToString() + ", ";
+            sql += "WHERE numero = '" + Cod + "';";
             conexaoProd.executarSql(sql);
         }
 
@@ -100,7 +87,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable tabela = new DataTable();
-            string sql = "Select numero, nome, descricao, qtd, preco from produto;";
+            string sql = "Select numero, nome, descricao, preco from produto;";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(tabela);
             return tabela;
@@ -110,14 +97,13 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
-            string sql = "SELECT nome, descricao, qtd, preco FROM produto WHERE numero = " + Cod + ";";
+            string sql = "SELECT nome, descricao, preco FROM produto WHERE numero = '" + Cod + "';";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(dataSet);
 
             nomeProduto = dataSet.Tables[0].Rows[0][0].ToString(); 
             descricao = dataSet.Tables[0].Rows[0][1].ToString();
-            qtd = Convert.ToDouble(dataSet.Tables[0].Rows[0][2].ToString());
-            preco = Convert.ToDouble(dataSet.Tables[0].Rows[0][3].ToString());
+            preco = Convert.ToDouble(dataSet.Tables[0].Rows[0][2].ToString());
         }
     }
 }

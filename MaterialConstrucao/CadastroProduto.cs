@@ -23,7 +23,6 @@ namespace MaterialConstrucao
         {
             txtNome.Enabled = status;
             txtNumero.Enabled = status;
-            txtQuantidade.Enabled = status;
             txtDescricao.Enabled = status;
             txtValor.Enabled = status;
         }
@@ -32,7 +31,6 @@ namespace MaterialConstrucao
         {
             txtNome.Text = "";
             txtNumero.Text = "";
-            txtQuantidade.Text = "";
             txtDescricao.Text = "";
             txtValor.Text = "";
         }
@@ -73,7 +71,6 @@ namespace MaterialConstrucao
             prod.setCodProduto(txtNumero.Text);
             prod.setDescricaoProduto(txtDescricao.Text);
             prod.setNomeProduto(txtNome.Text);
-            prod.setQtdProduto(Convert.ToDouble((txtQuantidade.Text)));
             prod.setValorProduto(Convert.ToDouble(txtValor.Text));
 
             if (novoProduto == true)
@@ -91,11 +88,9 @@ namespace MaterialConstrucao
         {
             prod.selectProduto();
 
-            txtNumero.Text = prod.getNomeProduto();
+            txtNumero.Text = prod.getCodProduto();
             txtDescricao.Text = prod.getDescricaoProduto();
             txtNome.Text = prod.getNomeProduto();
-
-            txtQuantidade.Text = prod.getQtdProduto().ToString();
             txtValor.Text = prod.getValorProduto().ToString();
         }
 
@@ -117,12 +112,15 @@ namespace MaterialConstrucao
             habilitaControles(true);
             limparControles();
             gerenciaBotoesBarra(false);
+            novoProduto = true;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             habilitaControles(true);
             gerenciaBotoesBarra(false);
+            txtNumero.Enabled = false;
+            novoProduto = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -187,13 +185,6 @@ namespace MaterialConstrucao
                 MessageBox.Show("Nome do produto é obrigatório, informe!", "Aviso!!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Focus(); 
-                return false;
-            }
-            if (txtQuantidade.Text.Trim().Length < 1)  
-            {
-                MessageBox.Show("A quantidade é obrigatória, informe!", "Aviso!!",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtQuantidade.Focus(); 
                 return false;
             }
             if (txtValor.Text.Trim().Length <= 3) 
