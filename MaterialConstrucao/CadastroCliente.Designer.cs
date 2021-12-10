@@ -49,9 +49,9 @@ namespace MaterialConstrucao
             this.btnSalvar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnSair = new System.Windows.Forms.ToolStripButton();
-            this.txtTelefone_C = new System.Windows.Forms.MaskedTextBox();
-            this.txtCPF_C = new System.Windows.Forms.MaskedTextBox();
             this.txtCEP_C = new System.Windows.Forms.TextBox();
+            this.txtCPF_C = new System.Windows.Forms.TextBox();
+            this.txtTelefone_C = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosCliente)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -156,7 +156,7 @@ namespace MaterialConstrucao
             // 
             this.lblTelefoneC.AutoSize = true;
             this.lblTelefoneC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefoneC.Location = new System.Drawing.Point(458, 129);
+            this.lblTelefoneC.Location = new System.Drawing.Point(486, 129);
             this.lblTelefoneC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefoneC.Name = "lblTelefoneC";
             this.lblTelefoneC.Size = new System.Drawing.Size(71, 20);
@@ -290,22 +290,6 @@ namespace MaterialConstrucao
             this.btnSair.ToolTipText = "Sair do cadastro";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // txtTelefone_C
-            // 
-            this.txtTelefone_C.Location = new System.Drawing.Point(462, 154);
-            this.txtTelefone_C.Mask = "(00)0000-9999";
-            this.txtTelefone_C.Name = "txtTelefone_C";
-            this.txtTelefone_C.Size = new System.Drawing.Size(83, 20);
-            this.txtTelefone_C.TabIndex = 28;
-            // 
-            // txtCPF_C
-            // 
-            this.txtCPF_C.Location = new System.Drawing.Point(373, 154);
-            this.txtCPF_C.Mask = "000.000.000-00";
-            this.txtCPF_C.Name = "txtCPF_C";
-            this.txtCPF_C.Size = new System.Drawing.Size(83, 20);
-            this.txtCPF_C.TabIndex = 28;
-            // 
             // txtCEP_C
             // 
             this.txtCEP_C.Location = new System.Drawing.Point(372, 268);
@@ -314,13 +298,27 @@ namespace MaterialConstrucao
             this.txtCEP_C.Size = new System.Drawing.Size(185, 20);
             this.txtCEP_C.TabIndex = 24;
             // 
+            // txtCPF_C
+            // 
+            this.txtCPF_C.Location = new System.Drawing.Point(373, 153);
+            this.txtCPF_C.Name = "txtCPF_C";
+            this.txtCPF_C.Size = new System.Drawing.Size(100, 20);
+            this.txtCPF_C.TabIndex = 28;
+            // 
+            // txtTelefone_C
+            // 
+            this.txtTelefone_C.Location = new System.Drawing.Point(490, 153);
+            this.txtTelefone_C.Name = "txtTelefone_C";
+            this.txtTelefone_C.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefone_C.TabIndex = 28;
+            // 
             // CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 414);
-            this.Controls.Add(this.txtCPF_C);
             this.Controls.Add(this.txtTelefone_C);
+            this.Controls.Add(this.txtCPF_C);
             this.Controls.Add(this.cboSiglaC);
             this.Controls.Add(this.lblSiglaC);
             this.Controls.Add(this.lblCidadeC);
@@ -367,9 +365,9 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ToolStripButton btnSalvar;
         private System.Windows.Forms.ToolStripButton btnExcluir;
         private System.Windows.Forms.ToolStripButton btnSair;
-        private System.Windows.Forms.MaskedTextBox txtTelefone_C;
-        private System.Windows.Forms.MaskedTextBox txtCPF_C;
         private System.Windows.Forms.TextBox txtCEP_C;
+        private System.Windows.Forms.TextBox txtCPF_C;
+        private System.Windows.Forms.TextBox txtTelefone_C;
     }
 }
 

@@ -85,7 +85,7 @@ namespace MaterialConstrucao
             {
                 conectaMySql();
                 MySqlCommand command = new MySqlCommand(instrucaoSQL, conn);
-                command.ExecuteNonQuery(); // execução sem retorno
+                command.ExecuteNonQuery(); // execução sem retorno 
             }
         }
 }

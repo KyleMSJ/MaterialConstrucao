@@ -84,6 +84,18 @@ namespace MaterialConstrucao
             conexao.executarSql(sql);
         }
 
+        public DataTable select()
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable tabela = new DataTable();
+            string sql = "SELECT id, data, idCliente ";
+            sql += "FROM pedido ";
+            sql += "INNER JOIN cliente on pedido.clienteid = cliente.clienteid";
+            adapter = conexao.executaRetornaDados(sql);
+            adapter.Fill(tabela);
+            return tabela;
+        }
+
         public void selectPedido()
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();

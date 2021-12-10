@@ -55,18 +55,11 @@ namespace MaterialConstrucao
             grdDadosCliente.Columns[0].HeaderText = "CPF";
             grdDadosCliente.Columns[1].HeaderText = "Nome";
             grdDadosCliente.Columns[2].HeaderText = "CEP";
-            //grdDados.Columns[3].HeaderText = "Cidade";
-            //grdDados.Columns[4].HeaderText = "Estado";
-            //grdDados.Columns[5].HeaderText = "Número";
-            //grdDados.Columns[6].HeaderText = "Telefone";
 
-            grdDadosCliente.Columns[0].Width = 30;
-            grdDadosCliente.Columns[1].Width = 70;
-            grdDadosCliente.Columns[2].Width = 260;
-            //grdDados.Columns[3].Width = 260;
-            //grdDados.Columns[4].Width = 5;
-            //grdDados.Columns[5].Width = 10;
-            //grdDados.Columns[6].Width = 20;
+            grdDadosCliente.Columns[0].Width = 90;
+            grdDadosCliente.Columns[1].Width = 100;
+            grdDadosCliente.Columns[2].Width = 120;
+ 
         }
         
         private void preencheGrid()

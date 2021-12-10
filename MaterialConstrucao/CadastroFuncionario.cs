@@ -47,9 +47,9 @@ namespace MaterialConstrucao
             grdDadosFuncionario.Columns[1].HeaderText = "Nome";
             grdDadosFuncionario.Columns[2].HeaderText = "Telefone";
 
-            grdDadosFuncionario.Columns[0].Width = 100;
-            grdDadosFuncionario.Columns[1].Width = 130;
-            grdDadosFuncionario.Columns[2].Width = 260;
+            grdDadosFuncionario.Columns[0].Width = 90;
+            grdDadosFuncionario.Columns[1].Width = 100;
+            grdDadosFuncionario.Columns[2].Width = 150;
         }
 
         private void preencheGrid()

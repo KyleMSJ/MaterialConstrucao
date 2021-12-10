@@ -13,7 +13,9 @@ namespace MaterialConstrucao
     public partial class CadastroProduto : Form
     {
         csProduto prod = new csProduto();
+
         bool novoProduto = false;
+
         public CadastroProduto()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace MaterialConstrucao
             grdDadosProduto.Columns[0].HeaderText = "Código";
             grdDadosProduto.Columns[1].HeaderText = "Nome do Produto";
 
-            grdDadosProduto.Columns[0].Width = 30;
+            grdDadosProduto.Columns[0].Width = 60;
             grdDadosProduto.Columns[1].Width = 100;
         }
        private void preencheGrid() 
@@ -91,7 +93,7 @@ namespace MaterialConstrucao
             txtNumero.Text = prod.getCodProduto();
             txtDescricao.Text = prod.getDescricaoProduto();
             txtNome.Text = prod.getNomeProduto();
-            txtValor.Text = prod.getValorProduto().ToString();
+            txtValor.Text = Convert.ToString(prod.getValorProduto());
         }
 
         private void grdDadosProduto_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -187,7 +189,7 @@ namespace MaterialConstrucao
                 txtNome.Focus(); 
                 return false;
             }
-            if (txtValor.Text.Trim().Length <= 3) 
+            if (txtValor.Text.Trim().Length < 2) 
             {
                 MessageBox.Show("Preço do produto é obrigatório, informe!", "Aviso!!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

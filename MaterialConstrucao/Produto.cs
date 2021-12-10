@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace MaterialConstrucao
 {
@@ -14,7 +15,8 @@ namespace MaterialConstrucao
         private string nomeProduto;
         private string descricao;
         private double preco;
-
+        //string texto = preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US"));
+        //Console.WriteLine(value.ToString(specifier, CultureInfo.InvariantCulture)); - formato US com '.'
         private ConexaoMySQL conexaoProd = new ConexaoMySQL();
 
         public void setCodProduto(string valor)
@@ -66,7 +68,8 @@ namespace MaterialConstrucao
             sql += preco.ToString() + ")";
             conexaoProd.executarSql(sql);
         }
-
+        //INSERT INTO produto (numero, nome, descricao, preco) VALUES ('302046', 'Chave de Fenda Tramontina',
+        //'Chave de fenda 1.5mm', 25,7.80);
         public void delete()
         {
             string sql = "Delete from produto WHERE numero = " + Cod + ";";
@@ -75,14 +78,14 @@ namespace MaterialConstrucao
 
         public void update()
         {
-            string sql = "UPDATE produto SET ";
-            sql += "nome = '" + nomeProduto + "', ";
-            sql += "descricao = '" + descricao + "', ";
-            sql += "preco = " + preco.ToString() + ", ";
-            sql += "WHERE numero = '" + Cod + "';";
+            string sql = "UPDATE produto SET "; 
+            sql += "nome = '" + nomeProduto + "',";
+            sql += "descricao = '" + descricao + "',";
+            sql += "preco = " + preco.ToString() + " WHERE numero = " + Cod + ";";
             conexaoProd.executarSql(sql);
         }
-
+        //string valor = dr["valordobanco"].toString().Replace(',', '.');
+        // UPDATE produto SET nome = 'Pia Azul', descricao = 'Pia de banheiro', preco = '119.90' WHERE numero = 6523
         public DataTable Select()
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();

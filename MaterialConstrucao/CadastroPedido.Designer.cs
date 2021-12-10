@@ -52,7 +52,7 @@ namespace MaterialConstrucao
             this.btnCancelarProduto = new System.Windows.Forms.ToolStripButton();
             this.btnSalvarProduto = new System.Windows.Forms.ToolStripButton();
             this.btnExcluirProduto = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grdProdutos = new System.Windows.Forms.DataGridView();
             this.cboProduto = new System.Windows.Forms.ComboBox();
             this.lbl_ItemProduto = new System.Windows.Forms.Label();
             this.lblQuantidade = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@ namespace MaterialConstrucao
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosPedido)).BeginInit();
             this.mnuItemPedido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -237,7 +237,7 @@ namespace MaterialConstrucao
             this.mnuItemPedido.MaximumSize = new System.Drawing.Size(1800, 237);
             this.mnuItemPedido.Name = "mnuItemPedido";
             this.mnuItemPedido.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.mnuItemPedido.Size = new System.Drawing.Size(315, 57);
+            this.mnuItemPedido.Size = new System.Drawing.Size(284, 57);
             this.mnuItemPedido.TabIndex = 51;
             this.mnuItemPedido.Text = "toolStrip2";
             // 
@@ -291,17 +291,17 @@ namespace MaterialConstrucao
             this.btnExcluirProduto.Text = "toolStripButton5";
             this.btnExcluirProduto.ToolTipText = "Excluir dados do produto";
             // 
-            // dataGridView1
+            // grdProdutos
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(367, 292);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(510, 130);
-            this.dataGridView1.TabIndex = 42;
+            this.grdProdutos.AllowUserToAddRows = false;
+            this.grdProdutos.AllowUserToDeleteRows = false;
+            this.grdProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdProdutos.Location = new System.Drawing.Point(367, 292);
+            this.grdProdutos.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.grdProdutos.Name = "grdProdutos";
+            this.grdProdutos.ReadOnly = true;
+            this.grdProdutos.Size = new System.Drawing.Size(510, 130);
+            this.grdProdutos.TabIndex = 42;
             // 
             // cboProduto
             // 
@@ -354,19 +354,20 @@ namespace MaterialConstrucao
             this.Controls.Add(this.cboCliente);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.txtData);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grdProdutos);
             this.Controls.Add(this.grdDadosPedido);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CadastroPedido";
             this.Text = "CadastroPedido";
+            this.Load += new System.EventHandler(this.CadastroPedido_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosPedido)).EndInit();
             this.mnuItemPedido.ResumeLayout(false);
             this.mnuItemPedido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,7 +397,7 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ToolStripButton btnCancelarProduto;
         private System.Windows.Forms.ToolStripButton btnSalvarProduto;
         private System.Windows.Forms.ToolStripButton btnExcluirProduto;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grdProdutos;
         private System.Windows.Forms.ComboBox cboProduto;
         private System.Windows.Forms.Label lbl_ItemProduto;
         private System.Windows.Forms.Label lblQuantidade;
