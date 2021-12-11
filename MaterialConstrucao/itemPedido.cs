@@ -14,7 +14,7 @@ namespace MaterialConstrucao
         private Int32 id;
         private Int32 idProduto;
         private Int32 idPedido;
-        private Int32 quantidade;
+        public double quantidade;
 
         private ConexaoMySQL conexao = new ConexaoMySQL();
 
@@ -48,12 +48,12 @@ namespace MaterialConstrucao
             return idPedido;
         }
 
-        public void setQuantidade(Int32 valor)
+        public void setQuantidade(double valor)
         {
             quantidade = valor;
         }
 
-        public Int32 getQuantidade()
+        public double getQuantidade()
         {
             return quantidade;
         }
@@ -116,7 +116,7 @@ namespace MaterialConstrucao
             DataSet dataset = new DataSet();
             string sql = "SELECT itempedidoid, codigoid, produtonome, itempedidoquantidade ";
             sql += " FROM itempedido "; 
-            sql += " inner join produto on itempedido.produtoid = produto.codigoid "; // Assistir aula
+            sql += " inner join produto on itempedido.produtoid = produto.numero "; 
             sql += "where pedidoid = " + id.ToString();
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(dataset);

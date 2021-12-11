@@ -197,11 +197,11 @@ namespace MaterialConstrucao
             this.grdDadosProduto.AllowUserToAddRows = false;
             this.grdDadosProduto.AllowUserToDeleteRows = false;
             this.grdDadosProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDadosProduto.Location = new System.Drawing.Point(13, 101);
+            this.grdDadosProduto.Location = new System.Drawing.Point(13, 62);
             this.grdDadosProduto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grdDadosProduto.Name = "grdDadosProduto";
             this.grdDadosProduto.ReadOnly = true;
-            this.grdDadosProduto.Size = new System.Drawing.Size(356, 335);
+            this.grdDadosProduto.Size = new System.Drawing.Size(356, 374);
             this.grdDadosProduto.TabIndex = 41;
             this.grdDadosProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDadosProduto_CellClick);
             // 

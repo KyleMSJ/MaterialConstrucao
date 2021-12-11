@@ -14,9 +14,7 @@ namespace MaterialConstrucao
         private string Cod;
         private string nomeProduto;
         private string descricao;
-        private double preco;
-        //string texto = preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US"));
-        //Console.WriteLine(value.ToString(specifier, CultureInfo.InvariantCulture)); - formato US com '.'
+        public double preco;
         private ConexaoMySQL conexaoProd = new ConexaoMySQL();
 
         public void setCodProduto(string valor)
@@ -81,11 +79,10 @@ namespace MaterialConstrucao
             string sql = "UPDATE produto SET "; 
             sql += "nome = '" + nomeProduto + "',";
             sql += "descricao = '" + descricao + "',";
-            sql += "preco = " + preco.ToString() + " WHERE numero = " + Cod + ";";
+            sql += "preco = " + preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US")); // Permite a conversão da ',' para '.'
+            sql += " WHERE numero = " + Cod + ";";
             conexaoProd.executarSql(sql);
         }
-        //string valor = dr["valordobanco"].toString().Replace(',', '.');
-        // UPDATE produto SET nome = 'Pia Azul', descricao = 'Pia de banheiro', preco = '119.90' WHERE numero = 6523
         public DataTable Select()
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();

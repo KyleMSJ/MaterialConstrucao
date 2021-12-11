@@ -26,8 +26,8 @@ namespace MaterialConstrucao
         private void preencheCliente()
         {
             cboCliente.DataSource = cliente.select();
-            cboCliente.DisplayMember = "nome";
-            cboCliente.DisplayMember = "CPF";
+            cboCliente.DisplayMember = "nome"; // declaração no banco
+            cboCliente.ValueMember = "CPF";
 
             cboCliente.SelectedIndex = -1;
         }
@@ -36,7 +36,7 @@ namespace MaterialConstrucao
         {
             cboFuncionario.DataSource = funcionario.select();
             cboFuncionario.DisplayMember = "nome";
-            cboFuncionario.DisplayMember = "telefone";
+            cboFuncionario.ValueMember = "CPF";
 
             cboFuncionario.SelectedIndex = -1;
         }
@@ -45,7 +45,7 @@ namespace MaterialConstrucao
         {
             cboProduto.DataSource = produto.Select();
             cboProduto.DisplayMember = "nome";
-            cboProduto.DisplayMember = "descricao";
+            cboProduto.ValueMember = "numero";
 
             cboProduto.SelectedIndex = -1;
         }
@@ -115,7 +115,7 @@ namespace MaterialConstrucao
         {
             grdProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            grdProdutos.Columns.Add("Codigo", "Codigo");
+            grdProdutos.Columns.Add("Codigo", "Codigo");  
             grdProdutos.Columns.Add("Produto", "Nome Produto");
             grdProdutos.Columns.Add("Quantidade", "Quantidade");
             grdProdutos.Columns.Add("Valor", "Valor");
@@ -123,9 +123,9 @@ namespace MaterialConstrucao
 
             grdProdutos.Columns[0].Width = 0;
             grdProdutos.Columns[1].Width = 100;
-            grdProdutos.Columns[2].Width = 30;
-            grdProdutos.Columns[3].Width = 30;
-            grdProdutos.Columns[4].Width = 30;
+            grdProdutos.Columns[2].Width = 100;
+            grdProdutos.Columns[3].Width = 60;
+            grdProdutos.Columns[4].Width = 60;
 
         }
 
@@ -134,6 +134,90 @@ namespace MaterialConstrucao
             grdDadosPedido.DataSource = pedido.select();
             formataGridPedido();
         }
+
+        public void preencheGridItemPedido()
+        {
+            grdDadosPedido.Rows.Clear();
+
+            DataSet itens = new DataSet();
+            itemPedido.setIdPedido(Convert.ToInt32(pedido.getCPF_Cliente())); // Passando o pedido que foi feito pelo cliente
+
+            itens = itemPedido.selectItemPedido_do_Pedido(); 
+
+            if (itens.Tables[0].Rows.Count > 0) // se existem pedidos...
+            {
+                foreach (DataRow linha in itens.Tables[0].Rows)
+                {
+                    DataGridViewRow item = new DataGridViewRow();
+                    item.CreateCells(grdDadosPedido);
+                    item.Cells[0].Value = linha[1].ToString(); // codigo do produto
+                    item.Cells[1].Value = linha[2].ToString(); // nome do produto
+                    item.Cells[2].Value = linha[3].ToString(); // quantidade item pedido
+                    item.Cells[3].Value = "10"; // Valor
+                    item.Cells[4].Value = "40"; // Valor Total
+                    grdDadosPedido.Rows.Add(item); // Adiciona uma linha
+                }
+            }
+        }
+
+        private void preencheDadosControlePedido()
+        {
+            pedido.selectPedido();
+            cboCliente.SelectedValue = pedido.getCPF_Cliente();
+            txtData.Text = pedido.getDataPedido().ToString();
+            cboFuncionario.SelectedValue = pedido.getCPF_Funcionario();
+            txtValorTotal.Text = pedido.getValorPedido().ToString();
+        }
+
+        private void salvarPedido()
+        {
+            pedido.setCPF_Cliente(Convert.ToString(cboCliente.SelectedValue));
+            pedido.setCPF_Funcionario(Convert.ToString(cboFuncionario.SelectedValue));
+            pedido.setDataPedido(Convert.ToDateTime(txtData.Text));
+            pedido.setValorPedido(Convert.ToDouble(txtValorTotal.Text + 1));
+
+            if (pedido.getPedidoId() == 0)
+            {
+                pedido.inserir();
+
+
+                //busca o ultimo pedido salvo
+                pedido.selectPedidoUltimo();
+                itemPedido.setIdPedido(pedido.getPedidoId());
+
+                for (int i = 0; i < grdDadosPedido.Rows.Count; i++)
+                {
+                    itemPedido.setQuantidade(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[2].Value.ToString()));
+                    itemPedido.setIdProduto(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
+                    itemPedido.inserir();
+                }
+                grdDadosPedido.Rows.Clear();
+
+            }
+            else
+            {
+                pedido.update();
+
+                itemPedido.setIdPedido(pedido.getPedidoId());
+
+                itemPedido.deleteAll();
+
+                for (int i = 0; i < grdDadosPedido.Rows.Count; i++)
+                {
+                    itemPedido.setQuantidade(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[2].Value.ToString()));
+                    itemPedido.setIdPedido(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
+                    itemPedido.inserir();
+                }
+                grdDadosPedido.Rows.Clear();
+
+            }
+        }
+
+        private void excluiPedido()
+        {
+            pedido.delete();
+        }
+
         private void CadastroPedido_Load(object sender, EventArgs e)
         {
             habilitaControlesPedido(false);
@@ -148,5 +232,114 @@ namespace MaterialConstrucao
             habilitaControlesItemPedido(false);
             gerenciaBotoesBarraItemPedido(true);
         }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitaControlesPedido(true);
+            limparControlesPedido();
+            gerenciaBotoesBarraPedido(false);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            habilitaControlesPedido(true);
+            gerenciaBotoesBarraPedido(false);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja cancelar o Pedido?", "Aviso!!!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                habilitaControlesPedido(false);
+                limparControlesPedido();
+                gerenciaBotoesBarraPedido(true);
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            salvarPedido();
+            habilitaControlesPedido(false);
+            limparControlesPedido();
+            gerenciaBotoesBarraPedido(true);
+            preencheGridPedido();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (pedido.getPedidoId() != 0)
+            {
+                DialogResult retorno = MessageBox.Show("Deseja excluir o Pedido?", "Exclusão",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (retorno == DialogResult.Yes)
+                {
+                    excluiPedido();
+                    limparControlesPedido();
+                    preencheGridPedido();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o Pedido para Excluir!!", "Aviso!!!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+        }
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void grdDadosPedido_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pedido.setPedidoId(Convert.ToInt32(grdProdutos.Rows[grdDadosPedido.CurrentRow.Index].Cells[0].Value.ToString()));
+            preencheDadosControlePedido();
+            preencheGridItemPedido();
+        }
+
+        private void btnNovoProduto_Click(object sender, EventArgs e)
+        {
+            habilitaControlesItemPedido(true);
+            limparControlesItemPedido();
+            gerenciaBotoesBarraItemPedido(false);
+        }
+
+        private void btnEditarProduto_Click(object sender, EventArgs e)
+        {
+            habilitaControlesItemPedido(true);
+            gerenciaBotoesBarraItemPedido(false);
+        }
+
+        private void btnCancelarProduto_Click(object sender, EventArgs e)
+        {
+            habilitaControlesItemPedido(false);
+            limparControlesItemPedido();
+            gerenciaBotoesBarraItemPedido(true);
+        }
+
+        private void btnSalvarProduto_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow item = new DataGridViewRow();
+            item.CreateCells(grdDadosPedido);
+            item.Cells[0].Value = cboProduto.SelectedValue; // numero do produto
+            item.Cells[1].Value = cboProduto.Text; // Nome Produto
+            item.Cells[2].Value = txtQuantidade.Text; // Quantidade
+            item.Cells[3].Value = produto.preco; //Valor do produto
+            item.Cells[4].Value = "40";
+            grdDadosPedido.Rows.Add(item); 
+
+            habilitaControlesItemPedido(false);
+            limparControlesItemPedido();
+            gerenciaBotoesBarraItemPedido(true);
+        }
+
+        private void btnExcluirProduto_Click(object sender, EventArgs e)
+        {
+            grdDadosPedido.Rows.RemoveAt(grdDadosPedido.CurrentRow.Index);
+        }
     }
+
+        
+
+
 }

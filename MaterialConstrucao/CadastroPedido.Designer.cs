@@ -77,7 +77,7 @@ namespace MaterialConstrucao
             this.toolStrip1.MaximumSize = new System.Drawing.Size(1800, 237);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(902, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(808, 57);
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -90,6 +90,7 @@ namespace MaterialConstrucao
             this.btnNovo.Size = new System.Drawing.Size(54, 54);
             this.btnNovo.Text = "toolStripButton1";
             this.btnNovo.ToolTipText = "Cadastra novo pedido";
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnEditar
             // 
@@ -100,6 +101,7 @@ namespace MaterialConstrucao
             this.btnEditar.Size = new System.Drawing.Size(54, 54);
             this.btnEditar.Text = "toolStripButton2";
             this.btnEditar.ToolTipText = "Edita dados do pedido";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCancelar
             // 
@@ -110,6 +112,7 @@ namespace MaterialConstrucao
             this.btnCancelar.Size = new System.Drawing.Size(54, 54);
             this.btnCancelar.Text = "toolStripButton3";
             this.btnCancelar.ToolTipText = "Cancelar cadastro";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -120,6 +123,7 @@ namespace MaterialConstrucao
             this.btnSalvar.Size = new System.Drawing.Size(54, 54);
             this.btnSalvar.Text = "toolStripButton4";
             this.btnSalvar.ToolTipText = "Salvar pedido";
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -130,6 +134,7 @@ namespace MaterialConstrucao
             this.btnExcluir.Size = new System.Drawing.Size(54, 54);
             this.btnExcluir.Text = "toolStripButton5";
             this.btnExcluir.ToolTipText = "Excluir pedido";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair
             // 
@@ -140,6 +145,7 @@ namespace MaterialConstrucao
             this.btnSair.Size = new System.Drawing.Size(54, 54);
             this.btnSair.Text = "toolStripButton6";
             this.btnSair.ToolTipText = "Sair do cadastro";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // grdDadosPedido
             // 
@@ -150,12 +156,13 @@ namespace MaterialConstrucao
             this.grdDadosPedido.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.grdDadosPedido.Name = "grdDadosPedido";
             this.grdDadosPedido.ReadOnly = true;
-            this.grdDadosPedido.Size = new System.Drawing.Size(339, 427);
+            this.grdDadosPedido.Size = new System.Drawing.Size(290, 427);
             this.grdDadosPedido.TabIndex = 42;
+            this.grdDadosPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDadosPedido_CellClick);
             // 
             // txtData
             // 
-            this.txtData.Location = new System.Drawing.Point(798, 99);
+            this.txtData.Location = new System.Drawing.Point(536, 176);
             this.txtData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtData.Mask = "00/00/0000";
             this.txtData.Name = "txtData";
@@ -166,7 +173,7 @@ namespace MaterialConstrucao
             // lblData
             // 
             this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(794, 76);
+            this.lblData.Location = new System.Drawing.Point(532, 152);
             this.lblData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(44, 20);
@@ -250,6 +257,7 @@ namespace MaterialConstrucao
             this.btnNovoProduto.Size = new System.Drawing.Size(54, 54);
             this.btnNovoProduto.Text = "toolStripButton1";
             this.btnNovoProduto.ToolTipText = "Cadastra novo produto";
+            this.btnNovoProduto.Click += new System.EventHandler(this.btnNovoProduto_Click);
             // 
             // btnEditarProduto
             // 
@@ -260,6 +268,7 @@ namespace MaterialConstrucao
             this.btnEditarProduto.Size = new System.Drawing.Size(54, 54);
             this.btnEditarProduto.Text = "toolStripButton2";
             this.btnEditarProduto.ToolTipText = "Edita dados do produto";
+            this.btnEditarProduto.Click += new System.EventHandler(this.btnEditarProduto_Click);
             // 
             // btnCancelarProduto
             // 
@@ -270,6 +279,7 @@ namespace MaterialConstrucao
             this.btnCancelarProduto.Size = new System.Drawing.Size(54, 54);
             this.btnCancelarProduto.Text = "toolStripButton3";
             this.btnCancelarProduto.ToolTipText = "Cancelar cadastro";
+            this.btnCancelarProduto.Click += new System.EventHandler(this.btnCancelarProduto_Click);
             // 
             // btnSalvarProduto
             // 
@@ -280,6 +290,7 @@ namespace MaterialConstrucao
             this.btnSalvarProduto.Size = new System.Drawing.Size(54, 54);
             this.btnSalvarProduto.Text = "toolStripButton4";
             this.btnSalvarProduto.ToolTipText = "Salvar dados do produto";
+            this.btnSalvarProduto.Click += new System.EventHandler(this.btnSalvarProduto_Click);
             // 
             // btnExcluirProduto
             // 
@@ -290,6 +301,7 @@ namespace MaterialConstrucao
             this.btnExcluirProduto.Size = new System.Drawing.Size(54, 54);
             this.btnExcluirProduto.Text = "toolStripButton5";
             this.btnExcluirProduto.ToolTipText = "Excluir dados do produto";
+            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
             // 
             // grdProdutos
             // 
@@ -300,7 +312,7 @@ namespace MaterialConstrucao
             this.grdProdutos.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.grdProdutos.Name = "grdProdutos";
             this.grdProdutos.ReadOnly = true;
-            this.grdProdutos.Size = new System.Drawing.Size(510, 130);
+            this.grdProdutos.Size = new System.Drawing.Size(370, 130);
             this.grdProdutos.TabIndex = 42;
             // 
             // cboProduto
@@ -340,7 +352,7 @@ namespace MaterialConstrucao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 509);
+            this.ClientSize = new System.Drawing.Size(808, 509);
             this.Controls.Add(this.mnuItemPedido);
             this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.txtValorTotal);

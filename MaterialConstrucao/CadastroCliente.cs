@@ -28,7 +28,6 @@ namespace MaterialConstrucao
 
         private void limparControles()
         {
-           // client.SetCPFCliente(0.ToString()); -> arrumar
             txtNomeC.Text = "";
             cboSiglaC.SelectedIndex = -1;
             txtCidadeC.Text = "";

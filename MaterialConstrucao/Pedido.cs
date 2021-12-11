@@ -20,6 +20,15 @@ namespace MaterialConstrucao
 
         private ConexaoMySQL conexao = new ConexaoMySQL();
 
+        public void setPedidoId(Int32 valor)
+        {
+            id = valor;
+        }
+
+        public Int32 getPedidoId()
+        {
+            return id;
+        }
         public void setDataPedido(DateTime valor)
         {
             valor = data;
@@ -50,19 +59,24 @@ namespace MaterialConstrucao
             return CPF_Funcionario;
         }
 
-        private void setValorPedido(double valor)
+        public void setValorPedido(double valor)
         {
             valor = valorTotal;
         }
 
+        public double getValorPedido()
+        {
+            return valorTotal;
+        }
+
         public void inserir()
         {
-            string sql = "INSERT INTO pedido(idCliente, idProduto, data, idFuncionario, valorTotal)";
+            string sql = "INSERT INTO pedido(idCliente, idProduto, dataPedido, idFuncionario, valorTotal)";
             sql += "VALUES (";
             sql += "'" + CPF_Cliente + "', ";
             sql += "'" + codProduto + "', ";
-            sql += "'" + data.ToString("yyyy-MM-DD") + "', ";
-            sql += "'" + CPF_Funcionario + "'";
+            sql += "'" + data.ToString("yyyy-MM-dd") + "', ";
+            sql += "'" + CPF_Funcionario + "', ";
             sql += valorTotal.ToString() + ")";
             conexao.executarSql(sql);
         }
@@ -72,7 +86,7 @@ namespace MaterialConstrucao
             string sql = "UPDATE pedido SET ";
             sql += "idCliente = '" + CPF_Cliente + "', ";
             sql += "idProduto = '" + codProduto + "', ";
-            sql += "data = '" + data.ToString("yyyy-MM-DD") + "', ";
+            sql += "dataPedido = '" + data.ToString("yyyy-MM-DD") + "', ";
             sql += "idFuncionario '" + CPF_Funcionario + "', ";
             sql += "valorTotal = " + valorTotal.ToString();
             sql += "WHERE id = " + id.ToString();
@@ -88,9 +102,9 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable tabela = new DataTable();
-            string sql = "SELECT id, data, idCliente ";
+            string sql = "SELECT id, dataPedido, idCliente ";
             sql += "FROM pedido ";
-            sql += "INNER JOIN cliente on pedido.clienteid = cliente.clienteid";
+            sql += "INNER JOIN cliente on pedido.idCliente = cliente.CPF";
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(tabela);
             return tabela;
@@ -100,7 +114,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataset = new DataSet();
-            string sql = "SELECT id, idCliente, idProduto, data, idFuncionario, valorTotal FROM pedido WHERE id = " + id.ToString();
+            string sql = "SELECT id, idCliente, idProduto, dataPedido, idFuncionario, valorTotal FROM pedido WHERE id = " + id.ToString();
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(dataset);
 
@@ -116,7 +130,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataset = new DataSet();
-            string sql = "SELECT max(id) FROM pedido"; // Assistir a aula 
+            string sql = "SELECT max(id) FROM pedido"; // max: maior id -> último pedido 
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(dataset);
 
