@@ -14,7 +14,6 @@ namespace MaterialConstrucao
         public Int32 id; // Auto Incremento
         public DateTime data;
         public string CPF_Cliente;
-        public string codProduto;
         public string CPF_Funcionario;
         public double valorTotal;
 
@@ -31,7 +30,7 @@ namespace MaterialConstrucao
         }
         public void setDataPedido(DateTime valor)
         {
-            valor = data;
+            data = valor;
         }
 
         public DateTime getDataPedido()
@@ -41,7 +40,7 @@ namespace MaterialConstrucao
 
         public void setCPF_Cliente(string valor)
         {
-            valor = CPF_Cliente;
+            CPF_Cliente = valor;
         }
 
         public string getCPF_Cliente()
@@ -51,7 +50,7 @@ namespace MaterialConstrucao
 
         public void setCPF_Funcionario(string valor)
         {
-            valor = CPF_Funcionario;
+            CPF_Funcionario = valor;
         }
 
         public string getCPF_Funcionario()
@@ -61,7 +60,7 @@ namespace MaterialConstrucao
 
         public void setValorPedido(double valor)
         {
-            valor = valorTotal;
+            valorTotal = valor;
         }
 
         public double getValorPedido()
@@ -71,10 +70,9 @@ namespace MaterialConstrucao
 
         public void inserir()
         {
-            string sql = "INSERT INTO pedido(idCliente, idProduto, dataPedido, idFuncionario, valorTotal)";
+            string sql = "INSERT INTO pedido(idCliente, dataPedido, idFuncionario, valorTotal)";
             sql += "VALUES (";
             sql += "'" + CPF_Cliente + "', ";
-            sql += "'" + codProduto + "', ";
             sql += "'" + data.ToString("yyyy-MM-dd") + "', ";
             sql += "'" + CPF_Funcionario + "', ";
             sql += valorTotal.ToString() + ")";
@@ -85,7 +83,6 @@ namespace MaterialConstrucao
         {
             string sql = "UPDATE pedido SET ";
             sql += "idCliente = '" + CPF_Cliente + "', ";
-            sql += "idProduto = '" + codProduto + "', ";
             sql += "dataPedido = '" + data.ToString("yyyy-MM-DD") + "', ";
             sql += "idFuncionario '" + CPF_Funcionario + "', ";
             sql += "valorTotal = " + valorTotal.ToString();
@@ -102,7 +99,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable tabela = new DataTable();
-            string sql = "SELECT id, dataPedido, idCliente ";
+            string sql = "SELECT id, dataPedido, cliente.nome ";
             sql += "FROM pedido ";
             sql += "INNER JOIN cliente on pedido.idCliente = cliente.CPF";
             adapter = conexao.executaRetornaDados(sql);
@@ -114,16 +111,15 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataset = new DataSet();
-            string sql = "SELECT id, idCliente, idProduto, dataPedido, idFuncionario, valorTotal FROM pedido WHERE id = " + id.ToString();
+            string sql = "SELECT id, idCliente, dataPedido, idFuncionario, valorTotal FROM pedido WHERE id = " + id.ToString();
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(dataset);
 
             id = Convert.ToInt32(dataset.Tables[0].Rows[0][0].ToString());
             CPF_Cliente = dataset.Tables[0].Rows[0][1].ToString();
-            codProduto = dataset.Tables[0].Rows[0][2].ToString();
-            data = Convert.ToDateTime(dataset.Tables[0].Rows[0][3].ToString());
-            CPF_Funcionario = dataset.Tables[0].Rows[0][4].ToString();
-            valorTotal = Convert.ToDouble(dataset.Tables[0].Rows[0][5].ToString());
+            data = Convert.ToDateTime(dataset.Tables[0].Rows[0][2].ToString());
+            CPF_Funcionario = dataset.Tables[0].Rows[0][3].ToString();
+            valorTotal = Convert.ToDouble(dataset.Tables[0].Rows[0][4].ToString());
         }
 
         public void selectPedidoUltimo()

@@ -114,7 +114,7 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataset = new DataSet();
-            string sql = "SELECT itempedidoid, codigoid, produtonome, itempedidoquantidade ";
+            string sql = "SELECT itempedidoid, pedidoid, produtoid, itempedidoquantidade ";
             sql += " FROM itempedido "; 
             sql += " inner join produto on itempedido.produtoid = produto.numero "; 
             sql += "where pedidoid = " + id.ToString();

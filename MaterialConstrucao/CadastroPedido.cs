@@ -45,7 +45,7 @@ namespace MaterialConstrucao
         {
             cboProduto.DataSource = produto.Select();
             cboProduto.DisplayMember = "nome";
-            cboProduto.ValueMember = "numero";
+            cboProduto.ValueMember = "preco";
 
             cboProduto.SelectedIndex = -1;
         }
@@ -122,7 +122,7 @@ namespace MaterialConstrucao
             grdProdutos.Columns.Add("Total", "Total");
 
             grdProdutos.Columns[0].Width = 0;
-            grdProdutos.Columns[1].Width = 100;
+            grdProdutos.Columns[1].Width = 160;
             grdProdutos.Columns[2].Width = 100;
             grdProdutos.Columns[3].Width = 60;
             grdProdutos.Columns[4].Width = 60;
@@ -137,10 +137,10 @@ namespace MaterialConstrucao
 
         public void preencheGridItemPedido()
         {
-            grdDadosPedido.Rows.Clear();
+            grdProdutos.Rows.Clear();
 
             DataSet itens = new DataSet();
-            itemPedido.setIdPedido(Convert.ToInt32(pedido.getCPF_Cliente())); // Passando o pedido que foi feito pelo cliente
+            itemPedido.setIdPedido(pedido.getPedidoId()); // Passando o pedido que foi feito pelo cliente
 
             itens = itemPedido.selectItemPedido_do_Pedido(); 
 
@@ -153,8 +153,8 @@ namespace MaterialConstrucao
                     item.Cells[0].Value = linha[1].ToString(); // codigo do produto
                     item.Cells[1].Value = linha[2].ToString(); // nome do produto
                     item.Cells[2].Value = linha[3].ToString(); // quantidade item pedido
-                    item.Cells[3].Value = "10"; // Valor
-                    item.Cells[4].Value = "40"; // Valor Total
+                    item.Cells[3].Value = produto.preco; // Valor
+                    item.Cells[4].Value = produto.preco * itemPedido.quantidade; // Valor Total
                     grdDadosPedido.Rows.Add(item); // Adiciona uma linha
                 }
             }
@@ -191,7 +191,7 @@ namespace MaterialConstrucao
                     itemPedido.setIdProduto(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
                     itemPedido.inserir();
                 }
-                grdDadosPedido.Rows.Clear();
+                grdProdutos.Rows.Clear();
 
             }
             else
@@ -208,7 +208,7 @@ namespace MaterialConstrucao
                     itemPedido.setIdPedido(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
                     itemPedido.inserir();
                 }
-                grdDadosPedido.Rows.Clear();
+                grdProdutos.Rows.Clear();
 
             }
         }
@@ -292,9 +292,12 @@ namespace MaterialConstrucao
 
         private void grdDadosPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            pedido.setPedidoId(Convert.ToInt32(grdProdutos.Rows[grdDadosPedido.CurrentRow.Index].Cells[0].Value.ToString()));
-            preencheDadosControlePedido();
-            preencheGridItemPedido();
+            if (grdDadosPedido.CurrentRow != null)
+            {
+                pedido.setPedidoId(Convert.ToInt32(grdDadosPedido.Rows[grdDadosPedido.CurrentRow.Index].Cells[0].Value.ToString()));
+                preencheDadosControlePedido();
+                preencheGridItemPedido();
+            }
         }
 
         private void btnNovoProduto_Click(object sender, EventArgs e)
@@ -320,13 +323,13 @@ namespace MaterialConstrucao
         private void btnSalvarProduto_Click(object sender, EventArgs e)
         {
             DataGridViewRow item = new DataGridViewRow();
-            item.CreateCells(grdDadosPedido);
+            item.CreateCells(grdProdutos);
             item.Cells[0].Value = cboProduto.SelectedValue; // numero do produto
             item.Cells[1].Value = cboProduto.Text; // Nome Produto
             item.Cells[2].Value = txtQuantidade.Text; // Quantidade
-            item.Cells[3].Value = produto.preco; //Valor do produto
-            item.Cells[4].Value = "40";
-            grdDadosPedido.Rows.Add(item); 
+            item.Cells[3].Value = cboProduto.SelectedValue.ToString(); //Valor do produto
+            item.Cells[4].Value = (Convert.ToDouble(cboProduto.SelectedValue) * Convert.ToDouble(txtQuantidade.Text)).ToString();
+            grdProdutos.Rows.Add(item); 
 
             habilitaControlesItemPedido(false);
             limparControlesItemPedido();
@@ -335,7 +338,7 @@ namespace MaterialConstrucao
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
         {
-            grdDadosPedido.Rows.RemoveAt(grdDadosPedido.CurrentRow.Index);
+            grdProdutos.Rows.RemoveAt(grdDadosPedido.CurrentRow.Index);
         }
     }
 
