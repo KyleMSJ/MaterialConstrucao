@@ -45,7 +45,7 @@ namespace MaterialConstrucao
         {
             cboProduto.DataSource = produto.Select();
             cboProduto.DisplayMember = "nome";
-            cboProduto.ValueMember = "preco";
+            cboProduto.ValueMember = "numero";
 
             cboProduto.SelectedIndex = -1;
         }
@@ -107,7 +107,7 @@ namespace MaterialConstrucao
             grdDadosPedido.Columns[2].HeaderText = "Cliente";
 
             grdDadosPedido.Columns[0].Width = 0;
-            grdDadosPedido.Columns[1].Width = 60;
+            grdDadosPedido.Columns[1].Width = 100;
             grdDadosPedido.Columns[2].Width = 180;
         }
 
@@ -122,7 +122,7 @@ namespace MaterialConstrucao
             grdProdutos.Columns.Add("Total", "Total");
 
             grdProdutos.Columns[0].Width = 0;
-            grdProdutos.Columns[1].Width = 160;
+            grdProdutos.Columns[1].Width = 150;
             grdProdutos.Columns[2].Width = 100;
             grdProdutos.Columns[3].Width = 60;
             grdProdutos.Columns[4].Width = 60;
@@ -149,13 +149,13 @@ namespace MaterialConstrucao
                 foreach (DataRow linha in itens.Tables[0].Rows)
                 {
                     DataGridViewRow item = new DataGridViewRow();
-                    item.CreateCells(grdDadosPedido);
+                    item.CreateCells(grdProdutos);
                     item.Cells[0].Value = linha[1].ToString(); // codigo do produto
                     item.Cells[1].Value = linha[2].ToString(); // nome do produto
                     item.Cells[2].Value = linha[3].ToString(); // quantidade item pedido
                     item.Cells[3].Value = produto.preco; // Valor
-                    item.Cells[4].Value = produto.preco * itemPedido.quantidade; // Valor Total
-                    grdDadosPedido.Rows.Add(item); // Adiciona uma linha
+                    item.Cells[4].Value = (produto.preco * itemPedido.quantidade); // Valor Total
+                    grdProdutos.Rows.Add(item); // Adiciona uma linha
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace MaterialConstrucao
             pedido.setCPF_Cliente(Convert.ToString(cboCliente.SelectedValue));
             pedido.setCPF_Funcionario(Convert.ToString(cboFuncionario.SelectedValue));
             pedido.setDataPedido(Convert.ToDateTime(txtData.Text));
-            pedido.setValorPedido(Convert.ToDouble(txtValorTotal.Text + 1));
+            pedido.setValorPedido(pedido.valorTotal);
 
             if (pedido.getPedidoId() == 0)
             {
@@ -185,10 +185,11 @@ namespace MaterialConstrucao
                 pedido.selectPedidoUltimo();
                 itemPedido.setIdPedido(pedido.getPedidoId());
 
-                for (int i = 0; i < grdDadosPedido.Rows.Count; i++)
+                for (int i = 0; i < grdProdutos.Rows.Count; i++)
                 {
-                    itemPedido.setQuantidade(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[2].Value.ToString()));
-                    itemPedido.setIdProduto(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
+                    itemPedido.setQuantidade(Convert.ToInt32(grdProdutos.Rows[i].Cells[2].Value.ToString()));
+                    cboProduto.ValueMember = "numero";
+                    itemPedido.setIdProduto(Convert.ToInt32(grdProdutos.Rows[i].Cells[0].Value.ToString()));
                     itemPedido.inserir();
                 }
                 grdProdutos.Rows.Clear();
@@ -202,15 +203,16 @@ namespace MaterialConstrucao
 
                 itemPedido.deleteAll();
 
-                for (int i = 0; i < grdDadosPedido.Rows.Count; i++)
+                for (int i = 0; i < grdProdutos.Rows.Count; i++)
                 {
-                    itemPedido.setQuantidade(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[2].Value.ToString()));
-                    itemPedido.setIdPedido(Convert.ToInt32(grdDadosPedido.Rows[i].Cells[0].Value.ToString()));
+                    itemPedido.setQuantidade(Convert.ToDouble(grdProdutos.Rows[i].Cells[2].Value.ToString()));
+                    cboProduto.ValueMember = "numero";
+                    itemPedido.setIdProduto(Convert.ToInt32(grdProdutos.Rows[i].Cells[0].Value.ToString()));
                     itemPedido.inserir();
                 }
                 grdProdutos.Rows.Clear();
-
             }
+            
         }
 
         private void excluiPedido()
@@ -324,25 +326,25 @@ namespace MaterialConstrucao
         {
             DataGridViewRow item = new DataGridViewRow();
             item.CreateCells(grdProdutos);
+            cboProduto.ValueMember = "numero";
             item.Cells[0].Value = cboProduto.SelectedValue; // numero do produto
             item.Cells[1].Value = cboProduto.Text; // Nome Produto
             item.Cells[2].Value = txtQuantidade.Text; // Quantidade
+            cboProduto.ValueMember = "preco";
             item.Cells[3].Value = cboProduto.SelectedValue.ToString(); //Valor do produto
             item.Cells[4].Value = (Convert.ToDouble(cboProduto.SelectedValue) * Convert.ToDouble(txtQuantidade.Text)).ToString();
-            grdProdutos.Rows.Add(item); 
-
+            grdProdutos.Rows.Add(item);
+            pedido.valorTotal += Convert.ToDouble(item.Cells[4].Value);
             habilitaControlesItemPedido(false);
             limparControlesItemPedido();
             gerenciaBotoesBarraItemPedido(true);
+            
         }
+        
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
         {
             grdProdutos.Rows.RemoveAt(grdDadosPedido.CurrentRow.Index);
         }
     }
-
-        
-
-
 }

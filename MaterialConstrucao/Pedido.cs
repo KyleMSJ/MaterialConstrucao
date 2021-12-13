@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace MaterialConstrucao
 {
@@ -75,7 +76,7 @@ namespace MaterialConstrucao
             sql += "'" + CPF_Cliente + "', ";
             sql += "'" + data.ToString("yyyy-MM-dd") + "', ";
             sql += "'" + CPF_Funcionario + "', ";
-            sql += valorTotal.ToString() + ")";
+            sql += valorTotal.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ")";
             conexao.executarSql(sql);
         }
 
@@ -83,10 +84,10 @@ namespace MaterialConstrucao
         {
             string sql = "UPDATE pedido SET ";
             sql += "idCliente = '" + CPF_Cliente + "', ";
-            sql += "dataPedido = '" + data.ToString("yyyy-MM-DD") + "', ";
-            sql += "idFuncionario '" + CPF_Funcionario + "', ";
-            sql += "valorTotal = " + valorTotal.ToString();
-            sql += "WHERE id = " + id.ToString();
+            sql += "dataPedido = '" + data.ToString("yyyy-MM-dd") + "', ";
+            sql += "idFuncionario = '" + CPF_Funcionario + "', ";
+            sql += "valorTotal = " + valorTotal.ToString("N", CultureInfo.CreateSpecificCulture("en-US")); 
+            sql += " WHERE id = " + id.ToString() + ";";
             conexao.executarSql(sql);
         }
         public void delete()
