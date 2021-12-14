@@ -142,8 +142,7 @@ namespace MaterialConstrucao
             DataSet itens = new DataSet();
             itemPedido.setIdPedido(pedido.getPedidoId()); // Passando o pedido que foi feito pelo cliente
 
-            itens = itemPedido.selectItemPedido_do_Pedido(); 
-
+            itens = itemPedido.selectItemPedido_do_Pedido();
             if (itens.Tables[0].Rows.Count > 0) // se existem pedidos...
             {
                 foreach (DataRow linha in itens.Tables[0].Rows)
@@ -153,8 +152,8 @@ namespace MaterialConstrucao
                     item.Cells[0].Value = linha[1].ToString(); // codigo do produto
                     item.Cells[1].Value = linha[2].ToString(); // nome do produto
                     item.Cells[2].Value = linha[3].ToString(); // quantidade item pedido
-                    item.Cells[3].Value = produto.preco; // Valor
-                    item.Cells[4].Value = (produto.preco * itemPedido.quantidade); // Valor Total
+                    item.Cells[3].Value = linha[4].ToString(); // Valor
+                    item.Cells[4].Value = linha[5].ToString(); // Valor Total
                     grdProdutos.Rows.Add(item); // Adiciona uma linha
                 }
             }
@@ -178,6 +177,7 @@ namespace MaterialConstrucao
 
             if (pedido.getPedidoId() == 0)
             {
+
                 pedido.inserir();
 
 
@@ -294,12 +294,9 @@ namespace MaterialConstrucao
 
         private void grdDadosPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (grdDadosPedido.CurrentRow != null)
-            {
                 pedido.setPedidoId(Convert.ToInt32(grdDadosPedido.Rows[grdDadosPedido.CurrentRow.Index].Cells[0].Value.ToString()));
                 preencheDadosControlePedido();
                 preencheGridItemPedido();
-            }
         }
 
         private void btnNovoProduto_Click(object sender, EventArgs e)
@@ -344,7 +341,15 @@ namespace MaterialConstrucao
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
         {
-            grdProdutos.Rows.RemoveAt(grdDadosPedido.CurrentRow.Index);
+                grdProdutos.Rows.RemoveAt(grdProdutos.CurrentRow.Index);
+               // pedido.valorTotal -= Convert.ToDouble(cbo);
+        }
+
+        private void grdProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cboProduto.ValueMember = "numero";
+            cboProduto.SelectedValue = Convert.ToInt32(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
+            txtQuantidade.Text = grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[2].Value.ToString();
         }
     }
 }

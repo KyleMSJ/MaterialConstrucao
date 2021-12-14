@@ -34,12 +34,11 @@ namespace MaterialConstrucao
             this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NotaFiscalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConsultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +48,7 @@ namespace MaterialConstrucao
             this.ClienteToolStripMenuItem,
             this.funcionárioToolStripMenuItem,
             this.ProdutoToolStripMenuItem,
-            this.PedidoToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.fecharToolStripMenuItem});
+            this.PedidoToolStripMenuItem});
             this.CadastroToolStripMenuItem.Name = "CadastroToolStripMenuItem";
             this.CadastroToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
             this.CadastroToolStripMenuItem.Text = "Cadastro";
@@ -84,29 +81,19 @@ namespace MaterialConstrucao
             this.PedidoToolStripMenuItem.Text = "Pedido";
             this.PedidoToolStripMenuItem.Click += new System.EventHandler(this.PedidoToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // ConsultaToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
-            // 
-            // fecharToolStripMenuItem
-            // 
-            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.fecharToolStripMenuItem.Text = "Fechar";
-            // 
-            // NotaFiscalToolStripMenuItem
-            // 
-            this.NotaFiscalToolStripMenuItem.Name = "NotaFiscalToolStripMenuItem";
-            this.NotaFiscalToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
-            this.NotaFiscalToolStripMenuItem.Text = "Nota Fiscal";
+            this.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem";
+            this.ConsultaToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.ConsultaToolStripMenuItem.Text = "Consulta";
+            this.ConsultaToolStripMenuItem.Click += new System.EventHandler(this.ConsultaToolStripMenuItem_Click);
             // 
             // mnuPrincipal
             // 
             this.mnuPrincipal.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.mnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CadastroToolStripMenuItem,
-            this.NotaFiscalToolStripMenuItem,
+            this.ConsultaToolStripMenuItem,
             this.ajudaToolStripMenuItem});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
@@ -117,7 +104,8 @@ namespace MaterialConstrucao
             // ajudaToolStripMenuItem
             // 
             this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem});
+            this.sobreToolStripMenuItem,
+            this.contatoToolStripMenuItem});
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
             this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
             this.ajudaToolStripMenuItem.Text = "Ajuda";
@@ -125,9 +113,16 @@ namespace MaterialConstrucao
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(151, 30);
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            // 
+            // contatoToolStripMenuItem
+            // 
+            this.contatoToolStripMenuItem.Name = "contatoToolStripMenuItem";
+            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(151, 30);
+            this.contatoToolStripMenuItem.Text = "Contato";
+            this.contatoToolStripMenuItem.Click += new System.EventHandler(this.contatoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -152,12 +147,11 @@ namespace MaterialConstrucao
         private System.Windows.Forms.ToolStripMenuItem ClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProdutoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PedidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem NotaFiscalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConsultaToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mnuPrincipal;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contatoToolStripMenuItem;
     }
 }

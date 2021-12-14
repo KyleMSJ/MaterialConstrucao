@@ -312,8 +312,9 @@ namespace MaterialConstrucao
             this.grdProdutos.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.grdProdutos.Name = "grdProdutos";
             this.grdProdutos.ReadOnly = true;
-            this.grdProdutos.Size = new System.Drawing.Size(424, 130);
+            this.grdProdutos.Size = new System.Drawing.Size(410, 130);
             this.grdProdutos.TabIndex = 42;
+            this.grdProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdProdutos_CellClick);
             // 
             // cboProduto
             // 

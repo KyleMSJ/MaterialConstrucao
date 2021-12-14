@@ -51,5 +51,17 @@ namespace MaterialConstrucao
             fPedido.MdiParent = this;
             fPedido.Show();
         }
+
+        private void contatoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("(XXX) XXXX-XXXX");
+        }
+
+        private void ConsultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsulta consulta = new frmConsulta();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
     }
 }

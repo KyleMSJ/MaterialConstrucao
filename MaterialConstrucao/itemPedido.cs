@@ -60,9 +60,8 @@ namespace MaterialConstrucao
 
         public void inserir()
         {
-            string sql = "INSERT INTO itempedido (itempedidoid, pedidoid, produtoid, itempedidoquantidade) ";
-            sql += "VALUES (";
-            sql += id.ToString() + ", " + idPedido.ToString() + ", " + idProduto.ToString() + ", ";
+            string sql = "INSERT INTO itempedido (pedidoid, produtoid, itempedidoquantidade) VALUES (";
+            sql += idPedido.ToString() + ", " + idProduto.ToString() + ", ";
             sql += quantidade.ToString() + ")";
             conexao.executarSql(sql);
         }
@@ -114,13 +113,20 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataset = new DataSet();
-            string sql = "SELECT itempedidoid, pedidoid, produtoid, itempedidoquantidade ";
-            sql += " FROM itempedido "; 
-            sql += " inner join produto on itempedido.produtoid = produto.numero "; 
-            sql += "where pedidoid = " + id.ToString();
+            string sql = "SELECT itempedidoid, pedidoid, produto.nome, itempedidoquantidade, produto.preco, ";
+            sql += "pedido.valorTotal FROM itempedido "; 
+            sql += " inner join produto on itempedido.produtoid = produto.numero ";
+            sql += " inner join pedido on itempedido.pedidoid = pedido.id ";
+            sql += "where pedidoid = " + idPedido.ToString();
             adapter = conexao.executaRetornaDados(sql);
             adapter.Fill(dataset);
             return dataset;
+
+            //SELECT itempedidoid, pedidoid, produto.nome, itempedidoquantidade, produto.preco,
+            //pedido.valorTotal FROM itempedido 
+            //INNER JOIN produto on itempedido.produtoid = produto.numero
+            //INNER JOIN pedido ON itempedido.pedidoid = pedido.id
+            //WHERE pedidoid = '10';
         }
     }
 }
