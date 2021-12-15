@@ -22,7 +22,7 @@ namespace MaterialConstrucao
 
             private void dadosConexao()
             {
-                string caminho = @"C:\Users\caio_\OneDrive\Área de Trabalho\MaterialConstrucao\acesso.txt"; // @ permite o entendimento de uma única barra invertida
+                string caminho = @"C:\Users\caio_\OneDrive\Área de Trabalho\MaterialConstrucao"; // @ permite o entendimento de uma única barra invertida
                 string linha = "";
 
 
