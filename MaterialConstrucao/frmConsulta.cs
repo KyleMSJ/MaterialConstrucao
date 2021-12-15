@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
-using System.Data;
+
 
 namespace MaterialConstrucao
 {
@@ -81,7 +81,18 @@ namespace MaterialConstrucao
 
         private void preencheGridSelect()
         {
-            grdSelect.DataSource = selectData();
+            if (cboSelectData.SelectedIndex != -1)
+            {
+                grdSelect.DataSource = selectData();
+                cboSelectNome.SelectedIndex = -1;
+                cboSelectNome.Enabled = false;
+            }
+            if (cboSelectNome.SelectedIndex != -1)
+            {
+                grdSelect.DataSource = selectCliente();
+                cboSelectData.SelectedIndex = -1;
+                cboSelectData.Enabled = false;
+            }
 
             grdSelect.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -108,13 +119,19 @@ namespace MaterialConstrucao
             return tabela;
         }
 
-       /* public DataTable selectCliente()
+        public DataTable selectCliente()
         {
+            cliente.SetCPFCliente(Convert.ToString(cboSelectNome.SelectedValue));
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable tabela = new DataTable();
+            string sql = "SELECT cliente.nome, dataPedido, valorTotal FROM pedido ";
+            sql += "INNER JOIN cliente on pedido.idCliente = cliente.CPF";
+            sql += " WHERE cliente.CPF = '" + cliente.GetCPFCliente() + "';";
+            adapter = conexao.executaRetornaDados(sql);
+            adapter.Fill(tabela);
+            return tabela;
+        }
 
-        }*/
-        //SELECT cliente.nome, dataPedido, sum(valorTotal) FROM pedido
-        //INNER JOIN cliente on pedido.idCliente = cliente.CPF
-        //WHERE dataPedido = '2010-10-12';
         private void btnSelect_Click(object sender, EventArgs e)
         {
             preencheGridSelect();
@@ -123,6 +140,10 @@ namespace MaterialConstrucao
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             preencheGrid();
+            cboSelectNome.SelectedIndex = -1;
+            cboSelectData.SelectedIndex = -1;
+            cboSelectNome.Enabled = true;
+            cboSelectData.Enabled = true;
         }
     }
 }

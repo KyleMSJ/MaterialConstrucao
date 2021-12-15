@@ -144,7 +144,7 @@ namespace MaterialConstrucao
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(54, 54);
             this.btnNovo.Text = "toolStripButton1";
-            this.btnNovo.ToolTipText = "Cadastra novo cliente";
+            this.btnNovo.ToolTipText = "Cadastra novo funcionário";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnEditar
@@ -155,7 +155,7 @@ namespace MaterialConstrucao
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(54, 54);
             this.btnEditar.Text = "toolStripButton2";
-            this.btnEditar.ToolTipText = "Edita dados do cliente";
+            this.btnEditar.ToolTipText = "Edita dados do funcionário";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCancelar
@@ -177,7 +177,7 @@ namespace MaterialConstrucao
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(54, 54);
             this.btnSalvar.Text = "toolStripButton4";
-            this.btnSalvar.ToolTipText = "Salvar dados do cliente";
+            this.btnSalvar.ToolTipText = "Salvar dados do funcionário";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
@@ -188,7 +188,7 @@ namespace MaterialConstrucao
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(54, 54);
             this.btnExcluir.Text = "toolStripButton5";
-            this.btnExcluir.ToolTipText = "Excluir dados do cliente";
+            this.btnExcluir.ToolTipText = "Excluir dados do funcionário";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair

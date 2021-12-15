@@ -15,6 +15,8 @@ namespace MaterialConstrucao
         private string nomeProduto;
         private string descricao;
         public double preco;
+        public double qtdEstoque;
+
         private ConexaoMySQL conexaoProd = new ConexaoMySQL();
 
         public void setCodProduto(string valor)
@@ -57,17 +59,26 @@ namespace MaterialConstrucao
             return preco;
         }
 
+        public void setQuantidadeProduto (double valor)
+        {
+            qtdEstoque = valor;
+        }
+
+        public double getQuantidadeProduto()
+        {
+            return qtdEstoque;
+        }
         public void inserir()
         {
-            string sql = "INSERT INTO produto (numero, nome, descricao, preco) VALUES (";
+            string sql = "INSERT INTO produto (numero, nome, descricao, preco, QtdEstoque) VALUES (";
             sql += "'" + Cod + "', ";
             sql += "'" + nomeProduto + "', ";
             sql += "'" + descricao + "', ";
-            sql += preco.ToString() + ")";
+            sql += preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ", ";
+            sql += qtdEstoque.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ")";
             conexaoProd.executarSql(sql);
         }
-        //INSERT INTO produto (numero, nome, descricao, preco) VALUES ('302046', 'Chave de Fenda Tramontina',
-        //'Chave de fenda 1.5mm', 25,7.80);
+
         public void delete()
         {
             string sql = "Delete from produto WHERE numero = " + Cod + ";";
@@ -79,15 +90,18 @@ namespace MaterialConstrucao
             string sql = "UPDATE produto SET "; 
             sql += "nome = '" + nomeProduto + "',";
             sql += "descricao = '" + descricao + "',";
-            sql += "preco = " + preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US")); // Permite a conversão da ',' para '.'
+            sql += "preco = " + preco.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ", ";
+            sql += "QtdEstoque = " + qtdEstoque.ToString("N", CultureInfo.CreateSpecificCulture("en-US"));
             sql += " WHERE numero = " + Cod + ";";
             conexaoProd.executarSql(sql);
+            // "N", CultureInfo.CreateSpecificCulture("en-US") -> Permite a conversão da ',' para '.'
+
         }
         public DataTable Select()
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable tabela = new DataTable();
-            string sql = "Select numero, nome, descricao, preco from produto;";
+            string sql = "Select numero, nome, descricao, preco, QtdEstoque from produto;";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(tabela);
             return tabela;
@@ -97,13 +111,14 @@ namespace MaterialConstrucao
         {
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
-            string sql = "SELECT nome, descricao, preco FROM produto WHERE numero = '" + Cod + "';";
+            string sql = "SELECT nome, descricao, preco, QtdEstoque FROM produto WHERE numero = '" + Cod + "';";
             adapter = conexaoProd.executaRetornaDados(sql);
             adapter.Fill(dataSet);
 
             nomeProduto = dataSet.Tables[0].Rows[0][0].ToString(); 
             descricao = dataSet.Tables[0].Rows[0][1].ToString();
             preco = Convert.ToDouble(dataSet.Tables[0].Rows[0][2].ToString());
+            qtdEstoque = Convert.ToDouble(dataSet.Tables[0].Rows[0][3].ToString());
         }
     }
 }

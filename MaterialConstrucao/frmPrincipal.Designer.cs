@@ -128,6 +128,7 @@ namespace MaterialConstrucao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::MaterialConstrucao.Properties.Resources.A_importância_do_CRM_para_lojas_de_materiais_de_construção;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.mnuPrincipal);
             this.IsMdiContainer = true;

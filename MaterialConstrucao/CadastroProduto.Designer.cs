@@ -46,6 +46,8 @@ namespace MaterialConstrucao
             this.grdDadosProduto = new System.Windows.Forms.DataGridView();
             this.lblNumero = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.lblQtd = new System.Windows.Forms.Label();
+            this.txtQtdProduto = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDadosProduto)).BeginInit();
             this.SuspendLayout();
@@ -224,6 +226,25 @@ namespace MaterialConstrucao
             this.txtNumero.Size = new System.Drawing.Size(109, 20);
             this.txtNumero.TabIndex = 28;
             // 
+            // lblQtd
+            // 
+            this.lblQtd.AutoSize = true;
+            this.lblQtd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtd.Location = new System.Drawing.Point(398, 146);
+            this.lblQtd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQtd.Name = "lblQtd";
+            this.lblQtd.Size = new System.Drawing.Size(186, 20);
+            this.lblQtd.TabIndex = 29;
+            this.lblQtd.Text = "Quantidade em Estoque:";
+            // 
+            // txtQtdProduto
+            // 
+            this.txtQtdProduto.Location = new System.Drawing.Point(402, 171);
+            this.txtQtdProduto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtQtdProduto.Name = "txtQtdProduto";
+            this.txtQtdProduto.Size = new System.Drawing.Size(182, 20);
+            this.txtQtdProduto.TabIndex = 28;
+            // 
             // CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,8 +255,10 @@ namespace MaterialConstrucao
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.lblValor);
+            this.Controls.Add(this.lblQtd);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.lblNome);
+            this.Controls.Add(this.txtQtdProduto);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.toolStrip1);
@@ -267,5 +290,7 @@ namespace MaterialConstrucao
         private System.Windows.Forms.DataGridView grdDadosProduto;
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label lblQtd;
+        private System.Windows.Forms.TextBox txtQtdProduto;
     }
 }

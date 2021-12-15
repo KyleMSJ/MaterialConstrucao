@@ -27,6 +27,7 @@ namespace MaterialConstrucao
             txtNumero.Enabled = status;
             txtDescricao.Enabled = status;
             txtValor.Enabled = status;
+            txtQtdProduto.Enabled = status;
         }
 
         private void limparControles()
@@ -35,6 +36,7 @@ namespace MaterialConstrucao
             txtNumero.Text = "";
             txtDescricao.Text = "";
             txtValor.Text = "";
+            txtQtdProduto.Text = "";
         }
 
         private void gerenciaBotoesBarra(bool status)
@@ -74,6 +76,7 @@ namespace MaterialConstrucao
             prod.setDescricaoProduto(txtDescricao.Text);
             prod.setNomeProduto(txtNome.Text);
             prod.setValorProduto(Convert.ToDouble(txtValor.Text));
+            prod.setQuantidadeProduto(Convert.ToDouble(txtQtdProduto.Text));
 
             if (novoProduto == true)
             {
@@ -94,6 +97,7 @@ namespace MaterialConstrucao
             txtDescricao.Text = prod.getDescricaoProduto();
             txtNome.Text = prod.getNomeProduto();
             txtValor.Text = Convert.ToString(prod.getValorProduto());
+            txtQtdProduto.Text = Convert.ToString(prod.getQuantidadeProduto());
         }
 
         private void grdDadosProduto_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -194,6 +198,13 @@ namespace MaterialConstrucao
                 MessageBox.Show("Preço do produto é obrigatório, informe!", "Aviso!!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtValor.Focus(); 
+                return false;
+            }
+            if (txtQtdProduto.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("Quantidade de entrada do produto é obrigatório, informe!", "Aviso!!",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValor.Focus();
                 return false;
             }
             return true;

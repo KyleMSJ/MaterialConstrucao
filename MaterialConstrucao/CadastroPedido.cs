@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+using System.Data;
+
 namespace MaterialConstrucao
 {
     public partial class CadastroPedido : Form
@@ -17,11 +20,14 @@ namespace MaterialConstrucao
         csProduto produto = new csProduto();
         csPedido pedido = new csPedido();
         csItemPedido itemPedido = new csItemPedido();
+        CadastroProduto prod = new CadastroProduto();
 
         public CadastroPedido()
         {
             InitializeComponent();
         }
+
+        private ConexaoMySQL conexao = new ConexaoMySQL();
 
         private void preencheCliente()
         {
@@ -54,7 +60,6 @@ namespace MaterialConstrucao
             cboCliente.Enabled = status;
             txtData.Enabled = status;
             cboFuncionario.Enabled = status;
-            txtValorTotal.Enabled = status;
 
             mnuItemPedido.Enabled = status;
         }
@@ -62,7 +67,7 @@ namespace MaterialConstrucao
         private void habilitaControlesItemPedido(bool status)
         {
             cboProduto.Enabled = status;
-            txtQuantidade.Enabled = status;
+            txtEstoque.Enabled = status;
         }
         private void limparControlesPedido()
         {
@@ -71,12 +76,14 @@ namespace MaterialConstrucao
             txtData.Text = "";
             cboFuncionario.SelectedIndex = -1;
             txtValorTotal.Text = "";
+            grdProdutos.Rows.Clear();
         }
 
         public void limparControlesItemPedido()
         {
             cboProduto.SelectedIndex = -1;
             txtQuantidade.Text = "";
+            txtEstoque.Text = "";
         }
 
 
@@ -180,7 +187,6 @@ namespace MaterialConstrucao
 
                 pedido.inserir();
 
-
                 //busca o ultimo pedido salvo
                 pedido.selectPedidoUltimo();
                 itemPedido.setIdPedido(pedido.getPedidoId());
@@ -193,7 +199,6 @@ namespace MaterialConstrucao
                     itemPedido.inserir();
                 }
                 grdProdutos.Rows.Clear();
-
             }
             else
             {
@@ -212,7 +217,6 @@ namespace MaterialConstrucao
                 }
                 grdProdutos.Rows.Clear();
             }
-            
         }
 
         private void excluiPedido()
@@ -233,6 +237,8 @@ namespace MaterialConstrucao
             formataGridItemPedido();
             habilitaControlesItemPedido(false);
             gerenciaBotoesBarraItemPedido(true);
+            txtQuantidade.Enabled = false;
+            txtValorTotal.Enabled = false;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -240,6 +246,7 @@ namespace MaterialConstrucao
             habilitaControlesPedido(true);
             limparControlesPedido();
             gerenciaBotoesBarraPedido(false);
+            
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -323,26 +330,37 @@ namespace MaterialConstrucao
         {
             DataGridViewRow item = new DataGridViewRow();
             item.CreateCells(grdProdutos);
-            cboProduto.ValueMember = "numero";
-            item.Cells[0].Value = cboProduto.SelectedValue; // numero do produto
-            item.Cells[1].Value = cboProduto.Text; // Nome Produto
-            item.Cells[2].Value = txtQuantidade.Text; // Quantidade
-            cboProduto.ValueMember = "preco";
-            item.Cells[3].Value = cboProduto.SelectedValue.ToString(); //Valor do produto
-            item.Cells[4].Value = (Convert.ToDouble(cboProduto.SelectedValue) * Convert.ToDouble(txtQuantidade.Text)).ToString();
-            grdProdutos.Rows.Add(item);
-            pedido.valorTotal += Convert.ToDouble(item.Cells[4].Value);
-            habilitaControlesItemPedido(false);
-            limparControlesItemPedido();
-            gerenciaBotoesBarraItemPedido(true);
-            
+            if (Convert.ToDouble(txtQuantidade.Text) > Convert.ToDouble(cboProduto.SelectedValue)) 
+            {
+                MessageBox.Show("Quantidade em estoque insuficiente!", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                cboProduto.ValueMember = "numero";
+                item.Cells[0].Value = cboProduto.SelectedValue; // numero do produto
+                item.Cells[1].Value = cboProduto.Text; // Nome Produto
+                item.Cells[2].Value = txtQuantidade.Text; // Quantidade
+                cboProduto.ValueMember = "preco";
+                item.Cells[3].Value = cboProduto.SelectedValue.ToString(); //Valor do produto
+                item.Cells[4].Value = (Convert.ToDouble(cboProduto.SelectedValue) * Convert.ToDouble(txtQuantidade.Text)).ToString();
+                grdProdutos.Rows.Add(item);
+                pedido.valorTotal += Convert.ToDouble(item.Cells[4].Value);
+                cboProduto.ValueMember = "numero";
+                double resultado = Convert.ToDouble(txtEstoque.Text) - Convert.ToDouble(txtQuantidade.Text);
+                string sql = "UPDATE produto SET QtdEstoque = ";
+                sql += resultado.ToString();
+                sql += " WHERE numero = '" + cboProduto.SelectedValue.ToString() + "';";
+                conexao.executarSql(sql);
+                habilitaControlesItemPedido(false);
+                limparControlesItemPedido();
+                gerenciaBotoesBarraItemPedido(true);
+                txtQuantidade.Enabled = false;
+            }
         }
-        
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
         {
                 grdProdutos.Rows.RemoveAt(grdProdutos.CurrentRow.Index);
-               // pedido.valorTotal -= Convert.ToDouble(cbo);
         }
 
         private void grdProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -350,6 +368,18 @@ namespace MaterialConstrucao
             cboProduto.ValueMember = "numero";
             cboProduto.SelectedValue = Convert.ToInt32(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
             txtQuantidade.Text = grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[2].Value.ToString();
+        }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        { 
+                cboProduto.ValueMember = "QtdEstoque";
+                txtQuantidade.Enabled = true;
+                txtEstoque.Text = cboProduto.SelectedValue.ToString();
+        }
+        private void btnAtualizar_Click_1(object sender, EventArgs e)
+        {
+            cboProduto.DataSource = produto.Select();
+            cboProduto.SelectedIndex = -1;
         }
     }
 }

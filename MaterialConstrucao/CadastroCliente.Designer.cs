@@ -220,7 +220,7 @@ namespace MaterialConstrucao
             this.toolStrip1.MaximumSize = new System.Drawing.Size(1200, 154);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(827, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(799, 57);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -231,7 +231,6 @@ namespace MaterialConstrucao
             this.btnNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(54, 54);
-            this.btnNovo.Text = "toolStripButton1";
             this.btnNovo.ToolTipText = "Cadastra novo cliente";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
@@ -316,7 +315,7 @@ namespace MaterialConstrucao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 414);
+            this.ClientSize = new System.Drawing.Size(799, 414);
             this.Controls.Add(this.txtTelefone_C);
             this.Controls.Add(this.txtCPF_C);
             this.Controls.Add(this.cboSiglaC);
